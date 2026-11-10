@@ -1,0 +1,13 @@
+# Оригиналы медиа (бэкап) — не деплоим
+media/_originals/
+
+# Служебное
+*.pyc
+__pycache__/
+.DS_Store
+
+# Временное
+_test.html
+_t.html
+*.part
+*.log

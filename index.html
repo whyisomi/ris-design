@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>РИС-Дизайн — дизайн интерьеров, строительные и отделочные работы под ключ</title>
+  <meta name="description" content="РИС-Дизайн: дизайн интерьеров, ремонт, строительные и отделочные работы под ключ. Премиальный подход, прозрачные сроки, надежность." />
+  <style>
+    :root{
+      --bg:#f7f5f2;
+      --ink:#1a1a1a;
+      --muted:#6b6b6b;
+      --line:#e6e3df;
+      --card:#ffffff;
+      --accent:#c5924a;
+      --accent-2:#b07033;
+      --ok:#3a6b4f;
+      --shadow: 0 20px 60px rgba(20,20,20,0.08);
+      --shadow-sm: 0 10px 30px rgba(20,20,20,0.06);
+      --radius: 14px;
+      --max: 1160px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      background:var(--bg);
+      color:var(--ink);
+      line-height:1.55;
+      -webkit-font-smoothing:antialiased;
+    }
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{max-width:var(--max);margin:0 auto;padding:0 20px}
+
+    /* Header */
+    .header{
+      position:sticky; top:0; z-index:50;
+      background:rgba(255,255,255,0.72);
+      backdrop-filter:saturate(140%) blur(14px);
+      border-bottom:1px solid var(--line);
+    }
+    .header .container{display:flex; align-items:center; justify-content:space-between; padding-top:14px; padding-bottom:14px}
+    .logo{height:38px; width:auto; border-radius:6px}
+    .nav{display:flex; gap:26px}
+    .nav a{
+      font-size:14px; font-weight:500; color:var(--muted);
+      transition:color .2s;
+      position:relative;
+    }
+    .nav a::after{
+      content:""; position:absolute; left:0; right:0; bottom:2px;
+      height:2px; border-radius:2px;
+      background:var(--accent);
+      transform:scaleX(0);
+      transform-origin:left center;
+      transition:transform .35s cubic-bezier(0.22,1,0.36,1);
+    }
+    @media (hover:hover) and (pointer:fine){
+      .nav a:hover{color:var(--ink)}
+      .nav a:hover::after{transform:scaleX(1)}
+      .nav a:focus-visible::after{transform:scaleX(1)}
+    }
+    .header-cta{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:10px 16px; border-radius:999px; font-weight:600; font-size:14px;
+      background:var(--ink); color:#fff; border:0; cursor:pointer;
+    }
+    .mobile-menu-btn{display:none; background:none; border:0; cursor:pointer}
+
+    /* Scroll progress */
+    .scroll-progress{
+      position:fixed; top:0; left:0; height:3px; width:0%;
+      background:var(--accent);
+      z-index:3000;
+      border-radius:0 2px 2px 0;
+      transition:width .08s linear;
+    }
+
+    /* Blobs */
+    .blob{position:absolute; border-radius:50%; filter:blur(70px); pointer-events:none; z-index:1;}
+    .blob-1{width:440px; height:440px; background:rgba(197,146,74,0.30); top:-140px; left:-120px; animation:blobFloat 16s ease-in-out infinite alternate;}
+    .blob-2{width:360px; height:360px; background:rgba(83,51,160,0.16); bottom:-150px; right:-90px; animation:blobFloat 20s ease-in-out infinite alternate-reverse;}
+    @keyframes blobFloat{from{transform:translate(0,0) scale(1)}to{transform:translate(50px,-40px) scale(1.09)}}
+
+    /* Hero */
+    .hero{
+      position:relative; overflow:hidden;
+      padding:72px 0 84px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.55), rgba(255,255,255,0.2)),
+        url('media/photo1.webp') center/cover no-repeat;
+      min-height: 88vh;
+    }
+    .hero::after{
+      content:""; position:absolute; inset:0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.55), rgba(197,146,74,0.15));
+      pointer-events:none;
+    }
+    .hero .container{position:relative; z-index:2}
+    .hero h1{
+      font-size: clamp(36px, 5vw, 64px);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      max-width: 860px;
+      margin: 0 0 20px;
+    }
+    .hero .lead{
+      font-size: clamp(16px, 1.6vw, 20px);
+      color:#2a2a2a;
+      max-width: 640px;
+      margin: 0 0 28px;
+    }
+    .cta-row{display:flex; flex-wrap:wrap; gap:12px; margin-bottom:36px}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:8px;
+      padding:14px 22px; border-radius:999px; font-weight:600; font-size:15px; cursor:pointer;
+      border:1px solid transparent; transition:transform .15s ease, box-shadow .2s ease;
+    }
+    .btn:active{transform:translateY(1px)}
+    .btn-primary{background:var(--ink); color:#fff; box-shadow:var(--shadow-sm)}
+    .btn-primary:hover{box-shadow:var(--shadow)}
+    .btn-wa{background:#25d366; color:#052e16}
+    .btn-wa:hover{box-shadow:var(--shadow)}
+    .btn-tg{background:#2AABEE; color:#fff}
+    .btn-tg:hover{box-shadow:var(--shadow)}
+    .btn-ghost{background:rgba(255,255,255,0.7); color:var(--ink); border-color:#dcd8d3}
+    .btn-ghost:hover{background:#fff}
+    .magnetic{ transform: translate(var(--tx,0px), var(--ty,0px)); transition: transform .4s cubic-bezier(0.22,1,0.36,1); }
+
+    .hero-pills{display:flex; flex-wrap:wrap; gap:10px}
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:10px 14px; border-radius:999px; font-size:13px; font-weight:500;
+      background:rgba(255,255,255,0.75); border:1px solid #dcd8d3; color:#3a3a3a;
+    }
+    .dot{width:8px; height:8px; border-radius:50%; background:var(--accent); display:inline-block}
+
+    /* Sections */
+    section{padding:80px 0}
+    section[id]{scroll-margin-top:90px}
+    .section-title{
+      font-size: clamp(26px, 3vw, 38px);
+      letter-spacing: -0.02em;
+      margin: 0 0 10px;
+    }
+    .section-sub{
+      color:var(--muted); font-size:16px; max-width: 640px;
+      margin: 0 0 36px;
+    }
+    .section-label{
+      font-size:12px; text-transform:uppercase; letter-spacing:.12em; font-weight:700; color:var(--accent);
+      margin-bottom:10px;
+    }
+
+    /* Advantages */
+    .advantages-grid{
+      display:grid; grid-template-columns: repeat(3, 1fr); gap:16px;
+    }
+    .adv{
+      background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
+      padding:22px 22px 18px; box-shadow:var(--shadow-sm);
+    }
+    .adv h3{font-size:15px; margin:0 0 6px}
+    .adv p{font-size:14px; color:var(--muted); margin:0}
+
+    /* Services */
+    .services-grid{
+      display:grid; grid-template-columns: repeat(4, 1fr); gap:16px;
+    }
+    .service{
+      background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
+      padding:26px 24px; box-shadow:var(--shadow-sm);
+      transition:box-shadow .25s ease, transform .25s ease;
+    }
+    .service:hover{box-shadow:var(--shadow); transform:translateY(-4px)}
+    .service .icon{
+      width:42px; height:42px; border-radius:12px; background:#efe9df;
+      display:grid; place-items:center; margin-bottom:14px; color:#7a5c33; font-weight:700;
+    }
+    .service h3{font-size:16px; margin:0 0 8px}
+    .service p{font-size:14px; color:var(--muted); margin:0}
+
+    /* Process */
+    .process-list{display:grid; grid-template-columns: repeat(4, 1fr); gap:14px}
+    .process{
+      background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
+      padding:22px 18px; position:relative;
+    }
+    .process .num{
+      position:absolute; top:14px; right:14px;
+      font-size:12px; font-weight:700; color:var(--accent); background:#efe9df;
+      padding:4px 10px; border-radius:999px;
+    }
+    .process h4{font-size:15px; margin:0 0 8px}
+    .process p{font-size:13px; color:var(--muted); margin:0}
+
+    /* Gallery */
+    .gallery{
+      display:grid; grid-template-columns: repeat(3, 1fr); gap:14px;
+    }
+    .gallery-item{
+      border-radius:var(--radius); overflow:hidden;
+      background:var(--card); border:1px solid var(--line);
+    }
+    .gallery-item img{
+      width:100%; height:260px; object-fit:cover; display:block;
+      transition:transform .6s cubic-bezier(0.22,1,0.36,1);
+    }
+    .gallery-item:hover img{transform:scale(1.04)}
+    .gallery-item .cap{padding:14px 16px; font-size:14px; color:#3a3a3a; font-weight:500}
+
+    /* About */
+    .about{
+      background:linear-gradient(180deg, #ffffff, #f1ede6);
+      border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+    }
+    .about-grid{display:grid; grid-template-columns: 1fr 1fr; gap:40px; align-items:center}
+    .about-text h2{margin:0 0 16px}
+    .about-text p{color:#3a3a3a; margin:0 0 14px}
+    .about-visual{border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow); border:1px solid var(--line)}
+    .about-visual img{width:100%; height:360px; object-fit:cover; display:block}
+
+    /* Reviews */
+    .reviews{background:#fff; border-top:1px solid var(--line); border-bottom:1px solid var(--line)}
+    .reviews-carousel{position:relative; margin-top:8px;}
+    .reviews-track{display:flex; gap:16px; overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none; -ms-overflow-style:none;}
+    .reviews-track::-webkit-scrollbar{display:none;}
+    .reviews-slide{flex:0 0 100%; scroll-snap-align:center; scroll-snap-stop:always;}
+    .reviews .review{
+      background:var(--bg); border:1px solid var(--line); border-radius:var(--radius);
+      padding:22px;
+      box-shadow: var(--shadow-sm);
+      overflow:hidden;
+    }
+    .reviews .review img.reviews-photo{
+      width:100%; height:360px; object-fit:contain; display:block;
+    }
+    .reviews-btn{
+      position:absolute; top:50%; transform:translateY(-50%); z-index:5;
+      width:44px; height:44px; border-radius:50%; border:1px solid var(--line);
+      background:#fff; color:var(--ink); font-size:20px; line-height:1; cursor:pointer;
+      display:grid; place-items:center; box-shadow:var(--shadow-sm);
+      transition:background .2s, transform .2s, box-shadow .2s;
+    }
+    .reviews-btn:hover{background:#f5f3ef; transform:translateY(-50%) scale(1.05); box-shadow:var(--shadow)}
+    .reviews-btn.prev{left:0;}
+    .reviews-btn.next{right:0;}
+    .reviews-dots{display:flex; gap:8px; justify-content:center; margin-top:18px;}
+    .reviews-dot{width:8px; height:8px; border-radius:50%; border:0; background:#e2ddd5; cursor:pointer; padding:0; transition:background .3s, transform .3s;}
+    .reviews-dot.active{background:var(--accent); transform:scale(1.2);}
+    .review p{font-size:14px; color:#3a3a3a; margin:0 0 14px; font-style:italic}
+    .review .author{font-size:13px; color:var(--muted); font-weight:600}
+
+    /* Contacts */
+    .contacts-grid{display:grid; grid-template-columns: 1.1fr .9fr; gap:22px; align-items:stretch;}
+    .contact-card{
+      background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
+      padding:24px; box-shadow:var(--shadow-sm);
+    }
+    .contact-card h3{margin:0 0 14px}
+    .contact-row{display:flex; align-items:center; gap:10px; font-size:14px; margin:0 0 10px}
+    .contact-row a{color:var(--ink); text-decoration:underline; text-underline-offset:3px}
+
+    form{display:grid; gap:10px}
+    input, textarea{
+      width:100%; padding:14px 16px; border-radius:12px; border:1px solid var(--line);
+      background:#fff; font:inherit; color:var(--ink);
+    }
+    textarea{min-height:120px; resize:vertical}
+    .form-note{font-size:12px; color:var(--muted); margin:4px 0 0}
+
+    /* Map */
+    .map-wrap{border-radius:var(--radius); overflow:hidden; border:1px solid var(--line); box-shadow:var(--shadow-sm)}
+    iframe{display:block; width:100%; height:420px; border:0}
+
+    /* Quiz */
+    .quiz{background:linear-gradient(180deg, #ffffff, #f1ede6); border-top:1px solid var(--line); border-bottom:1px solid var(--line)}
+    .quiz .qs{max-width:860px; margin:0 auto}
+    .quiz .qs__card{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:22px; box-shadow:var(--shadow-sm)}
+    .quiz .q-head{margin-bottom:14px}
+    .quiz .q-text{font-size:20px; margin:14px 0 0}
+    .quiz .pager{margin-top:18px; display:flex; align-items:center; gap:14px}
+    .quiz .rnd{width:38px; height:38px; border-radius:50%; border:1px solid var(--line); background:#fff; color:var(--ink); cursor:pointer; font-size:18px}
+    .quiz .rnd[disabled]{opacity:.35; cursor:default}
+    .quiz .pnum{font-weight:700; min-width:44px; text-align:center; color:var(--accent)}
+    .quiz .bar{flex:1; height:4px; border-radius:999px; background:#efe9df; overflow:hidden}
+    .quiz .bar i{display:block; height:100%; background:linear-gradient(90deg, var(--accent), var(--accent-2)); transition:width .4s ease}
+    .quiz .opts{display:grid; grid-template-columns: repeat(2, 1fr); gap:12px; margin-top:6px}
+    .quiz .opt{border:1px solid var(--line); background:#fff; padding:16px 18px; border-radius:12px; cursor:pointer; font-size:16px; text-align:left; transition:border-color .2s, background .2s}
+    .quiz .opt:hover{border-color:var(--accent); background:#faf8f5}
+    .quiz .opt.sel{border-color:var(--accent); background:#f5efe6}
+    .quiz .q-foot{margin-top:18px; display:flex; align-items:center; justify-content:space-between; gap:10px}
+    .quiz .q-agree{font-size:13px; color:var(--muted); margin:12px 0 4px; display:inline-flex; align-items:center; gap:6px; vertical-align:middle; line-height:1.2}
+    .quiz .q-agree input[type="checkbox"]{width:16px; height:16px; accent-color:var(--accent); flex-shrink:0; vertical-align:middle}
+    .quiz .q-agree label{vertical-align:middle; line-height:1.2}
+    .quiz .q-final h3{font-size:22px; margin:0 0 10px}
+    .quiz .q-final p{color:#3a3a3a; margin:0 0 14px; font-size:16px; line-height:1.6}
+    .quiz .q-phone{display:flex; align-items:center; gap:10px; border:1px solid var(--line); border-radius:999px; padding:12px 16px; background:#fff}
+    .quiz .q-phone input{border:0; outline:0; width:100%; font:inherit; font-size:16px; background:transparent; color:var(--ink)}
+    .quiz .q-sum{margin-top:14px; background:#fff; border:1px solid var(--line); border-radius:12px; padding:14px 16px; opacity:0; transform:translateY(20px); transition:opacity .8s ease, transform .8s cubic-bezier(0.22,1,0.36,1)}
+    .quiz .q-sum.is-visible{opacity:1; transform:none}
+    .quiz .q-final{margin-top:14px; opacity:0; transform:translateY(20px); transition:opacity .9s ease .12s, transform .9s cubic-bezier(0.22,1,0.36,1) .12s}
+    .quiz .q-final.is-visible{opacity:1; transform:none}
+    .q-channel{margin-top:12px;}
+    .q-channel select{
+      width:100%; padding:12px 16px; border:1px solid var(--line); border-radius:999px;
+      background:#fff; font:inherit; font-size:16px; color:var(--ink); outline:0;
+    }
+    .quiz .q-sum b{display:block; font-size:13px; text-transform:uppercase; letter-spacing:.08em; color:var(--accent); margin-bottom:6px}
+    .quiz .q-sum-row{display:flex; flex-wrap:wrap; gap:6px 10px; margin-bottom:8px}
+    .quiz .q-sum-row span{border:1px solid var(--line); border-radius:999px; padding:4px 10px; font-size:14px}
+    @media (max-width: 640px){
+      .quiz .opts{grid-template-columns: 1fr}
+      .quiz .q-text{font-size:18px}
+    }
+
+    /* Footer */
+    .footer{
+      position:relative;
+      color:#d6d3cf;
+      background-color: #111;
+      background-image:
+        linear-gradient(180deg, rgba(17,17,17,0.78), rgba(17,17,17,0.88)),
+        url('media/photo4.webp');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-blend-mode: normal;
+    }
+    .footer .container{padding:44px 20px; display:grid; grid-template-columns: 1.2fr 1fr 1fr; gap:30px}
+    .footer h4{margin:0 0 10px; font-size:14px; color:#fff}
+    .footer a, .footer p{color:#b8b4af; font-size:14px}
+    .footer a{display:block; margin:0 0 8px; position:relative}
+    .footer a[href^="#"]::after{
+      content:""; position:absolute; left:0; right:0; bottom:2px;
+      height:2px; border-radius:2px;
+      background:var(--accent);
+      transform:scaleX(0);
+      transform-origin:left center;
+      transition:transform .35s cubic-bezier(0.22,1,0.36,1);
+    }
+    @media (hover:hover) and (pointer:fine){
+      .footer a[href^="#"]:hover::after{transform:scaleX(1)}
+      .footer a[href^="#"]:focus-visible::after{transform:scaleX(1)}
+    }
+    .footer-bottom{border-top:1px solid #2a2a2a; padding:18px 20px; text-align:center; font-size:13px; color:#8a8783}
+
+    /* Back to top */
+    .back-to-top{
+      position:fixed; right:18px; bottom:18px; z-index:60;
+      width:48px; height:48px; border-radius:50%;
+      border:1px solid var(--line); background:#fff; color:var(--ink);
+      font-size:20px; cursor:pointer;
+      display:grid; place-items:center;
+      box-shadow:var(--shadow-sm);
+      opacity:0; visibility:hidden; transform:translateY(12px);
+      transition:opacity .35s ease, transform .35s cubic-bezier(0.22,1,0.36,1), visibility .35s;
+    }
+    .back-to-top.show{opacity:1; transform:translateY(0); visibility:visible;}
+    .back-to-top:hover{background:#f5f3ef}
+
+    /* FAB */
+    .fab{
+      position:fixed; left:18px; bottom:18px; z-index:60;
+      background:linear-gradient(45deg, #833AB4, #E1306C, #FD1D1D);
+      color:#fff; width:54px; height:54px; border-radius:50%;
+      display:grid; place-items:center; font-weight:700; border:0; cursor:pointer;
+      box-shadow:var(--shadow);
+    }
+
+    @media (max-width: 980px){
+      .nav{display:none}
+      .mobile-menu-btn{display:block}
+      .advantages-grid, .services-grid, .process-list, .reviews-grid{grid-template-columns: repeat(2, 1fr)}
+      .gallery{grid-template-columns: repeat(2, 1fr)}
+      .about-grid, .contacts-grid{grid-template-columns: 1fr}
+      .footer .container{grid-template-columns: 1fr}
+    }
+    @media (max-width: 560px){
+      .hero{padding:56px 0 64px}
+      .advantages-grid, .services-grid, .process-list, .reviews-grid, .gallery{grid-template-columns: 1fr}
+      .process-list{grid-template-columns: 1fr}
+    }
+
+    @keyframes fadeInUp{
+      from{opacity:0; transform:translateY(24px)}
+      to{opacity:1; transform:translateY(0)}
+    }
+    .reveal{
+      opacity:0;
+      transform:translateY(48px);
+      transition: opacity 1.4s cubic-bezier(0.22, 1, 0.36, 1), transform 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .reveal.in{
+      opacity:1;
+      transform:none;
+    }
+    .gallery-item.reveal.in:nth-child(1){transition-delay:0s}
+    .gallery-item.reveal.in:nth-child(2){transition-delay:.12s}
+    .gallery-item.reveal.in:nth-child(3){transition-delay:.24s}
+
+    /* Intro */
+    .intro{
+      position:fixed; inset:0; z-index:100;
+      display:flex; align-items:center; justify-content:center;
+    }
+    .intro__back{
+      position:absolute; inset:0;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.55), rgba(197,146,74,0.25)),
+        url('media/photo5.webp') center/cover no-repeat;
+      animation: introFade 1.6s ease both;
+    }
+    .intro__card{
+      position:relative; z-index:2;
+      text-align:center; max-width:640px; padding:40px 28px;
+      background:rgba(255,255,255,0.75);
+      backdrop-filter:saturate(140%) blur(14px);
+      border:1px solid var(--line);
+      border-radius:20px;
+      box-shadow: var(--shadow);
+      animation: introUp 1s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both;
+    }
+    .intro__logo{height:64px; width:auto; margin:0 auto 16px; border-radius:8px}
+    .intro__title{
+      font-size: clamp(30px, 4vw, 48px);
+      letter-spacing: -0.02em;
+      margin: 0 0 10px;
+    }
+    .intro__text{
+      color:#3a3a3a;
+      font-size:16px;
+      margin: 0 0 22px;
+    }
+    @keyframes introFade{ from{opacity:0} to{opacity:1} }
+    @keyframes introUp{ from{opacity:0; transform:translateY(30px)} to{opacity:1; transform:translateY(0)} }
+    .intro.is-hidden{ display:none }
+    .intro.is-leaving{
+      animation: introLeave 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      pointer-events:none;
+    }
+    @keyframes introLeave{
+      from{ opacity:1; transform:translateY(0) scale(1); }
+      to{ opacity:0; transform:translateY(-40px) scale(0.98); }
+    }
+    .phone-modal{ position: fixed; inset: 0; z-index: 1000; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity .3s ease, visibility .3s ease; visibility: hidden; }
+    .phone-modal.is-visible{ opacity: 1; pointer-events: auto; visibility: visible; }
+    .phone-modal__backdrop{ position: absolute; inset: 0; background: rgba(0,0,0,0.45); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+    .phone-modal__card{ position: relative; z-index: 1; background: #fff; border-radius: 16px; padding: 28px 24px; width: min(320px, 92vw); text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,0.18); animation: modalIn .35s cubic-bezier(.22,1,.36,1); }
+    @keyframes modalIn{ from{ opacity:0; transform: translateY(20px) scale(.97); } to{ opacity:1; transform: translateY(0) scale(1); } }
+    .phone-modal__close{ position: absolute; top: 10px; right: 12px; background: transparent; border: none; font-size: 26px; line-height: 1; color: #6b6b6b; cursor: pointer; }
+    .phone-modal__title{ font-family: 'Playfair Display', serif; font-size: 18px; margin: 0 0 14px; color: #1f1f1f; }
+    .phone-modal__number{ display: block; font-size: 20px; font-weight: 700; color: #111; text-decoration: none; border-radius: 10px; padding: 10px; background: #f5f3ef; margin-bottom: 8px; }
+    .phone-modal__number:hover{ background: #ece8e0; }
+    .phone-modal__note{ font-size: 13px; color: #7a7a7a; margin: 0; }
+  </style>
+</head>
+<body>
+  <div class="scroll-progress" id="scrollProgress"></div>
+  <div class="intro" id="intro">
+    <div class="intro__back"></div>
+    <div class="intro__card">
+      <img class="intro__logo" src="media/logo.webp" alt="РИС-Дизайн логотип" />
+      <h1 class="intro__title">РИС-Дизайн</h1>
+      <p class="intro__text">Дизайн-проект · Ремонт · Комплектация · Изготовление мебели</p>
+      <button class="btn btn-primary intro__enter" id="introEnter">Войти на сайт</button>
+    </div>
+  </div>
+
+  <header class="header">
+    <div class="container">
+      <a href="#"><img class="logo" src="media/logo.webp" alt="РИС-Дизайн логотип" /></a>
+      <nav class="nav">
+        <a href="#services">Услуги</a>
+        <a href="portfolio.html">Портфолио</a>
+        <a href="#process">Как мы работаем</a>
+        <a href="#contacts">Контакты</a>
+      </nav>
+      <a class="header-cta magnetic phone-open" href="javascript:void(0)" data-phone="+79171647077">Позвонить</a>
+      <button class="mobile-menu-btn" aria-label="Меню">☰</button>
+    </div>
+  </header>
+
+  <section class="hero reveal">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="container">
+      <h1>РИС-Дизайн — дизайн интерьеров, строительные и отделочные работы под ключ</h1>
+      <p class="lead">Создаем стильные, функциональные и качественные пространства для жизни и бизнеса. От идеи до сдачи объекта — в одном месте.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary magnetic" href="#contacts">Оставить заявку</a>
+        <a class="btn btn-tg magnetic" href="https://t.me/+79171647077" target="_blank" rel="noopener">Написать в Telegram</a>
+        <a class="btn btn-ghost magnetic" href="https://yandex.ru/maps/org/ris_dizayn/162965584925/?ll=50.116469%2C53.191614&z=14.45" target="_blank" rel="noopener">Наш адрес на карте</a>
+      </div>
+      <div class="hero-pills">
+        <span class="pill"><span class="dot"></span>Полный цикл работ</span>
+        <span class="pill"><span class="dot"></span>Индивидуальный проект</span>
+        <span class="pill"><span class="dot"></span>Сроки и контроль качества</span>
+        <span class="pill"><span class="dot"></span>Прозрачная смета</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="quiz reveal" id="quiz">
+    <div class="container">
+      <div class="section-label">Калькулятор заявки</div>
+      <h2 class="section-title">Ответьте на 5 вопросов и получите расчет стоимости</h2>
+      <div class="quiz">
+        <div class="qs">
+          <div class="qs__card">
+            <div class="q-head">
+              <div class="pager">
+                <button class="rnd" id="qBack" disabled>←</button>
+                <div class="pnum" id="qNum">1</div>
+                <div class="bar"><i id="qBar" style="width:20%"></i></div>
+              </div>
+              <h3 class="q-text" id="qText"></h3>
+            </div>
+            <div class="q-body" id="qBody"></div>
+            <div class="q-foot">
+              <button class="btn btn-primary" id="qNext" style="margin-left:auto">Далее →</button>
+            </div>
+            <div class="q-sum" id="qSummary" style="display:none; margin-top:14px;">
+              <b>Ваш запрос</b>
+              <div class="q-sum-row" id="qSummaryRows"></div>
+            </div>
+            <div class="q-final" id="qFinal" style="display:none; margin-top:14px;">
+              <h3>Оставьте контакт для связи</h3>
+              <p>Мы свяжемся с вами и подготовим 3 варианта расчета.</p>
+              <div class="q-phone">
+                <i>📞</i>
+                <input type="tel" id="qPhone" placeholder="+7 (___) ___-__-__" />
+              </div>
+              <div class="q-agree">
+                <input type="checkbox" id="qAgree" /> <label for="qAgree">Я согласен на обработку персональных данных</label>
+              </div>
+              <div class="q-channel">
+                <label class="q-channel__label" for="qChannel">Куда отправить заявку?</label>
+                <select id="qChannel">
+                  <option value="email">На почту</option>
+                  <option value="telegram">В Telegram</option>
+                </select>
+              </div>
+              <button class="btn btn-primary magnetic" id="qSubmit" style="margin-top:12px; width:100%">Отправить заявку</button>
+              <small>Нажимая кнопку, вы соглашаетесь с обработкой данных.</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="reveal">
+    <div class="container">
+      <div class="section-label">Что мы делаем</div>
+      <h2 class="section-title">Услуги</h2>
+      <p class="section-sub">РИС-Дизайн – компания полного цикла: от проекта до переезда</p>
+      <div class="services-grid">
+        <article class="service">
+          <div class="icon">1</div>
+          <h3>Дизайн интерьера</h3>
+          <p>Планировочные решения, реалистичные 3D-визуализации, планы для реализации, перечень отделочных материалов, сметы на ремонт и материалы</p>
+        </article>
+        <article class="service">
+          <div class="icon">2</div>
+          <h3>Ремонт квартир и домов</h3>
+          <p>15 лет опыта и собственный штат специалистов. Смета до начала работ. Договор с гарантией и поэтапной оплатой</p>
+        </article>
+        <article class="service">
+          <div class="icon">3</div>
+          <h3>Комплектация материалами</h3>
+          <p>Подбор материалов в уютной студии в центре города. Доставки и разгрузки на объекте, взаимодействие с производителями. Выгодные акции и дополнительные бонусы от нашей студии.</p>
+        </article>
+        <article class="service">
+          <div class="icon">4</div>
+          <h3>Изготовление мебели</h3>
+          <p>Производство корпусной и мягкой мебели в Самаре в соответствии с дизайн-проектом и бюджетом, большой выбор материалов</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="about reveal" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-text">
+          <div class="section-label">О компании</div>
+          <h2 class="section-title">РИС-Дизайн — пространства, в которых хочется жить</h2>
+          <p>Мы создаем дизайн-проекты для жизни и успешно реализуем их 15 лет. Наша команда берет на себя весь процесс: от проекта до переезда.</p>
+          <p>Мы работаем по договору с гарантией и поэтапной оплатой, присылаем фото и видеотчеты, ведем авторский надзор</p>
+          <p>Наша команда успешно реализовала множество проектов, благодаря опыту и профессионализму. Мы знаем, как воплотить в жизнь любое решение.</p>
+        </div>
+        <div class="about-visual">
+          <img src="media/photo2.webp" alt="Реализованный проект РИС-Дизайн" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="process" class="reveal">
+    <div class="container">
+      <div class="section-label">Как мы работаем?</div>
+      <h2 class="section-title">От встречи до реализованного интерьера</h2>
+      <p class="section-sub">Прозрачный порядок работы: от заявки до реализованного интерьера.</p>
+      <div class="process-list">
+        <div class="process"><span class="num">01</span><h4>Заявка</h4><p>Фиксируем Ваши пожелания и примерно ориентируем Вас по стоимости.</p></div>
+        <div class="process"><span class="num">02</span><h4>Заключение договора</h4><p>Выезжаем на замер, более подробно согласовываем детали, заключаем договор.</p></div>
+        <div class="process"><span class="num">03</span><h4>Разработка и согласование дизайн проекта</h4><p>Разрабатываем несколько вариантов планировочных решений, демонстрируем дизайн вашего интерьера в 3D-визуализациях, составляем все необходимые чертежи для реализации Вашего дизайн проекта, просчитываем точные сметы на работы и материалы.</p></div>
+        <div class="process"><span class="num">04</span><h4>Реализация проекта</h4><p>Заключение договора на реализацию. Закупки чистовых и черновых материалов, доставки и разгрузки. Поэтапная оплата работ. Фото и видео-отчеты. Контроль качества работ. Авторский надзор в подарок.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="reviews" id="reviews">
+    <div class="container">
+      <div class="section-label">Отзывы</div>
+      <h2 class="section-title">Наши клиенты доверяют нам и обращаются вновь</h2>
+      <p class="section-sub">Ведь заказывая реализацию проекта Вы получаете максимальное соответствие между дизайн-проектом и Вашим ремонтом.</p>
+      <div class="reviews-carousel">
+        <div class="reviews-track">
+          <div class="reviews-slide">
+            <div class="review">
+              <img class="reviews-photo" src="media/отзыв1.webp" alt="Отзыв клиента" loading="lazy" />
+            </div>
+          </div>
+          <div class="reviews-slide">
+            <div class="review">
+              <img class="reviews-photo" src="media/отзыв2.webp" alt="Отзыв клиента" loading="lazy" />
+            </div>
+          </div>
+          <div class="reviews-slide">
+            <div class="review">
+              <img class="reviews-photo" src="media/отзыв3.webp" alt="Отзыв клиента" loading="lazy" />
+            </div>
+          </div>
+        </div>
+        <button class="reviews-btn prev" id="reviewsPrev" aria-label="Предыдущий отзыв">‹</button>
+        <button class="reviews-btn next" id="reviewsNext" aria-label="Следующий отзыв">›</button>
+        <div class="reviews-dots"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacts">
+    <div class="container">
+      <div class="section-label">Контакты</div>
+      <h2 class="section-title">Свяжитесь с нами</h2>
+      <p class="section-sub">Оставьте заявку, позвоните или напишите в удобном мессенджере.</p>
+      <div class="contacts-grid">
+        <div class="contact-card">
+          <h3>Заявка на проект</h3>
+          <form id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+            <input type="hidden" name="_subject" value="Заявка с сайта РИС-Дизайн" />
+            <input type="text" name="name" placeholder="Ваше имя" required />
+            <input type="tel" name="phone" placeholder="Телефон" required />
+            <input type="text" name="object" placeholder="Объект: квартира, дом, офис" />
+            <textarea name="message" placeholder="Кратко опишите задачу: ремонт, дизайн, отделка"></textarea>
+            <button class="btn btn-primary" type="submit">Отправить заявку</button>
+            <p class="form-note">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных.</p>
+          </form>
+        </div>
+        <div class="contact-card">
+          <h3>Контакты</h3>
+          <div class="contact-row">📍 <a href="https://yandex.ru/maps/org/ris_dizayn/162965584925/?ll=50.116469%2C53.191614&z=14.45" target="_blank" rel="noopener">Открыть в Яндекс Картах</a></div>
+          <div class="contact-row">📞 <a href="tel:+79171647077">+7 (917) 164-70-77</a></div>
+          <div class="contact-row">✈️ <a href="https://t.me/+79171647077" target="_blank" rel="noopener">Telegram</a></div>
+          <div class="contact-row">💬 <a href="https://api.whatsapp.com/send/?phone=79171647077&text=%D0%9E%D0%B1%D1%80%D0%B0%D1%89%D0%B5%D0%BD%D0%B8%D0%B5+%D0%B8%D0%B7+%D0%AF%D0%BD%D0%B4%D0%B5%D0%BA%D1%81+%D0%9A%D0%B0%D1%80%D1%82%0A%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!+%D0%9C%D0%B5%D0%BD%D1%8F+%D0%B7%D0%B0%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D0%B5%D1%81%D0%BE%D0%B2%D0%B0%D0%BB%D0%BE+%D0%B2%D0%B0%D1%88%D0%B5+%D0%BF%D1%80%D0%B5%D0%B4%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5&type=phone_number&app_absent=0" target="_blank" rel="noopener">WhatsApp</a></div>
+          <div class="contact-row">📷 <a href="https://www.instagram.com/love_ris.design/" target="_blank" rel="noopener">Instagram</a></div>
+          <div class="contact-row">🌐 <a href="https://vk.ru/ris_design" target="_blank" rel="noopener">ВКонтакте</a></div>
+          <div style="margin-top:14px">
+            <a class="btn btn-primary magnetic phone-open" href="javascript:void(0)" data-phone="+79171647077" style="width:100%">Позвонить</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="reveal">
+    <div class="container">
+      <div class="section-label">Как нас найти</div>
+      <h2 class="section-title">Мы на карте</h2>
+      <div class="map-wrap">
+        <iframe src="https://yandex.ru/map-widget/v1/?ll=50.116469%2C53.191614&z=14.45&pt=50.116469,53.191614,pm2rdm" allowfullscreen style="width:100%; height:420px; border:0; display:block;"></iframe>
+      </div>
+      <div style="margin-top:14px">
+        <a class="btn btn-ghost" href="https://yandex.ru/maps/org/ris_dizayn/162965584925/?ll=50.116469%2C53.191614&z=14.45" target="_blank" rel="noopener">Открыть в Яндекс Картах</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div>
+        <h4>РИС-Дизайн</h4>
+        <p>Дизайн интерьеров, строительные и отделочные работы под ключ.</p>
+        <p>Качество, сроки, прозрачность.</p>
+      </div>
+      <div>
+        <h4>Навигация</h4>
+        <a href="#services">Услуги</a>
+        <a href="portfolio.html">Портфолио</a>
+        <a href="#process">Как мы работаем</a>
+        <a href="#contacts">Контакты</a>
+      </div>
+      <div>
+        <h4>Контакты</h4>
+        <a href="tel:+79171647077">+7 (917) 164-70-77</a>
+        <a href="https://t.me/+79171647077" target="_blank" rel="noopener">Telegram</a>
+        <a href="https://api.whatsapp.com/send/?phone=79171647077&text=%D0%9E%D0%B1%D1%80%D0%B0%D1%89%D0%B5%D0%BD%D0%B8%D0%B5+%D0%B8%D0%B7+%D0%AF%D0%BD%D0%B4%D0%B5%D0%BA%D1%81+%D0%9A%D0%B0%D1%80%D1%82%0A%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!+%D0%9C%D0%B5%D0%BD%D1%8F+%D0%B7%D0%B0%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D0%B5%D1%81%D0%BE%D0%B2%D0%B0%D0%BB%D0%BE+%D0%B2%D0%B0%D1%88%D0%B5+%D0%BF%D1%80%D0%B5%D0%B4%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5&type=phone_number&app_absent=0" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="https://vk.ru/ris_design" target="_blank" rel="noopener">ВКонтакте</a>
+        <a href="https://www.instagram.com/love_ris.design/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://yandex.ru/maps/org/ris_dizayn/162965584925/?ll=50.116469%2C53.191614&z=14.45" target="_blank" rel="noopener">Яндекс Карты</a>
+      </div>
+    </div>
+    <div class="footer-bottom">© РИС-Дизайн. Все права защищены.</div>
+  </footer>
+
+  <button class="back-to-top" id="backToTop" aria-label="Наверх">↑</button>
+
+  <a class="fab" href="https://www.instagram.com/love_ris.design/" target="_blank" rel="noopener" aria-label="Instagram">
+    <img src="media/instagram.webp" alt="Instagram" style="width:24px; height:24px; object-fit:contain;" />
+  </a>
+
+  <div id="phoneModal" class="phone-modal" aria-hidden="true">
+    <div class="phone-modal__backdrop"></div>
+    <div class="phone-modal__card" role="dialog" aria-modal="true">
+      <button class="phone-modal__close" aria-label="Закрыть">×</button>
+      <p class="phone-modal__title">Позвонить нам</p>
+      <a class="phone-modal__number" href="tel:+79171647077">+7 (917) 164-70-77</a>
+      <p class="phone-modal__note">Нажмите на номер, чтобы позвонить</p>
+    </div>
+  </div>
+  <script>
+    document.querySelector('.mobile-menu-btn').addEventListener('click', () => {
+      const nav = document.querySelector('.nav');
+      const open = nav.style.display === 'flex';
+      nav.style.display = open ? 'none' : 'flex';
+      if (!open) {
+        nav.style.position = 'absolute';
+        nav.style.top = '68px';
+        nav.style.left = '0';
+        nav.style.right = '0';
+        nav.style.background = '#fff';
+        nav.style.borderBottom = '1px solid #e6e3df';
+        nav.style.padding = '14px 20px';
+        nav.style.flexDirection = 'column';
+        nav.style.gap = '12px';
+      }
+    });
+
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+        } else {
+          entry.target.classList.remove('in');
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach(el => observer.observe(el));
+
+    const scrollProgress = document.getElementById('scrollProgress');
+    function updateScrollProgress(){
+      const el = document.documentElement;
+      const max = el.scrollHeight - el.clientHeight;
+      const p = max > 0 ? el.scrollTop / max : 0;
+      if (scrollProgress) scrollProgress.style.width = (p * 100) + '%';
+    }
+    window.addEventListener('scroll', updateScrollProgress, { passive: true });
+    window.addEventListener('resize', updateScrollProgress);
+    updateScrollProgress();
+
+    const backToTop = document.getElementById('backToTop');
+    function toggleBackToTop(){
+      if (backToTop) backToTop.classList.toggle('show', window.scrollY > 300);
+    }
+    backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    window.addEventListener('scroll', toggleBackToTop, { passive: true });
+    toggleBackToTop();
+
+    document.querySelectorAll('.magnetic').forEach(btn => {
+      btn.addEventListener('mousemove', (e) => {
+        const r = btn.getBoundingClientRect();
+        const x = (e.clientX - (r.left + r.width / 2)) / (r.width / 2 || 1);
+        const y = (e.clientY - (r.height / 2)) / (r.height / 2 || 1);
+        btn.style.setProperty('--tx', (Math.max(-1, Math.min(1, x)) * 8) + 'px');
+        btn.style.setProperty('--ty', (Math.max(-1, Math.min(1, y)) * 6) + 'px');
+      });
+      btn.addEventListener('mouseleave', () => {
+        btn.style.setProperty('--tx', '0px');
+        btn.style.setProperty('--ty', '0px');
+      });
+    });
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        const target = document.querySelector(targetId);
+        if (!target) return;
+        const nav = document.querySelector('.nav');
+        if (nav && nav.style.display === 'flex') nav.style.display = 'none';
+        e.preventDefault();
+        target.classList.remove('in');
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        setTimeout(() => target.classList.add('in'), 600);
+      });
+    });
+
+    (function(){
+      const form = document.getElementById('contactForm');
+      if (!form) return;
+      function toMailBody(formData){
+        const labels = {
+          name: 'Имя',
+          phone: 'Телефон',
+          object: 'Объект',
+          message: 'Сообщение'
+        };
+        const lines = [];
+        for (const [key, value] of formData.entries()) {
+          if (!value) continue;
+          const label = labels[key] || key;
+          lines.push(`${label} - ${value}`);
+        }
+        return lines.join('\n');
+      }
+      form.addEventListener('submit', function(e) {
+        const action = (form.getAttribute('action') || '').trim();
+        if (!action || action.includes('YOUR_FORM_ID')) {
+          e.preventDefault();
+          const formData = new FormData(form);
+          const body = toMailBody(formData);
+          window.location.href = `mailto:ris89171647077@gmail.com?subject=${encodeURIComponent('Заявка с сайта РИС-Дизайн')}&body=${encodeURIComponent(body)}`;
+        }
+      });
+    })();
+
+    (function(){
+      const qText = document.getElementById('qText');
+      const qBody = document.getElementById('qBody');
+      const qNext = document.getElementById('qNext');
+      const qBack = document.getElementById('qBack');
+      const qNum = document.getElementById('qNum');
+      const qBar = document.getElementById('qBar');
+      const qSummary = document.getElementById('qSummary');
+      const qSummaryRows = document.getElementById('qSummaryRows');
+      const qFinal = document.getElementById('qFinal');
+      const qSubmit = document.getElementById('qSubmit');
+      const qPhone = document.getElementById('qPhone');
+      const qAgree = document.getElementById('qAgree');
+      const qChannel = document.getElementById('qChannel');
+
+      const QUESTIONS = [
+        { key:'object', text:'Какой объект?', opts:['Квартира','Дом/коттедж'] },
+        { key:'service', text:'Что нужно сделать?', opts:['Дизайн интерьера','Ремонт под ключ'] },
+        { key:'area', text:'Площадь объекта?', opts:['До 50 м²','50-100 м²','100-200 м²','Больше 200 м²'] },
+        { key:'timing', text:'Когда планируете начать?', opts:['Срочно','В течение месяца','В течение 3 месяцев','Только планирую'] },
+        { key:'channel', text:'Как удобнее связаться?', opts:['Telegram','WhatsApp','Телефон','Любой способ'] }
+      ];
+
+      let step = 0;
+      const answers = {};
+      let lastSelected = null;
+
+      function render(){
+        const q = QUESTIONS[step];
+        qText.textContent = q.text;
+        qNum.textContent = step + 1;
+        qBar.style.width = ((step + 1) / (QUESTIONS.length + 1) * 100) + '%';
+        qBack.disabled = step === 0;
+
+        qBody.innerHTML = '';
+        q.opts.forEach(opt => {
+          const el = document.createElement('div');
+          el.className = 'opt' + (answers[q.key] === opt ? ' sel' : '');
+          el.textContent = opt;
+          el.addEventListener('click', () => {
+            answers[q.key] = opt;
+            lastSelected = opt;
+            render();
+          });
+          qBody.appendChild(el);
+        });
+
+        qNext.textContent = 'Далее →';
+
+        if (answers[q.key] && step < QUESTIONS.length - 1) {
+          setTimeout(() => document.getElementById('quiz').scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
+        }
+      }
+
+      function showSummary(){
+        qSummary.style.display = 'block';
+        qSummaryRows.innerHTML = '';
+        QUESTIONS.forEach(q => {
+          const row = document.createElement('span');
+          row.textContent = answers[q.key] || '';
+          qSummaryRows.appendChild(row);
+        });
+        qFinal.style.display = 'block';
+        requestAnimationFrame(() => {
+          qSummary.classList.add('is-visible');
+          qFinal.classList.add('is-visible');
+        });
+        setTimeout(() => document.getElementById('quiz').scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
+      }
+
+      function getMailForm(data){
+        const form = document.createElement('form');
+        form.method = 'POST';
+        form.action = 'https://formspree.io/f/YOUR_FORM_ID';
+        form.style.display = 'none';
+        const subject = document.createElement('input');
+        subject.type = 'hidden';
+        subject.name = '_subject';
+        subject.value = 'Заявка с сайта РИС-Дизайн';
+        form.appendChild(subject);
+        Object.entries(data).forEach(([k,v]) => {
+          const i = document.createElement('input');
+          i.type = 'hidden';
+          i.name = k;
+          i.value = v;
+          form.appendChild(i);
+        });
+        return form;
+      }
+
+      qNext.addEventListener('click', () => {
+        if (!answers[QUESTIONS[step].key]) return;
+        if (step < QUESTIONS.length - 1) {
+          step++;
+          render();
+        } else {
+          showSummary();
+        }
+      });
+
+      qBack.addEventListener('click', () => {
+        if (step > 0) {
+          step--;
+          render();
+        }
+      });
+
+      qSubmit.addEventListener('click', () => {
+        const phone = qPhone.value.trim();
+        if (!phone || !qAgree.checked) {
+          alert('Пожалуйста, введите телефон и подтвердите согласие.');
+          return;
+        }
+        const data = {
+          object: answers['object'] || '',
+          service: answers['service'] || '',
+          area: answers['area'] || '',
+          timing: answers['timing'] || '',
+          channel: answers['channel'] || '',
+          phone: phone,
+          source: 'quiz'
+        };
+        const form = getMailForm(data);
+        const action = (form.getAttribute('action') || '').trim();
+        const subject = encodeURIComponent('Заявка с сайта РИС-Дизайн');
+        const lines = [
+          ['Объект', data.object],
+          ['Что нужно сделать', data.service],
+          ['Площадь объекта', data.area],
+          ['Когда планируете начать', data.timing],
+          ['Как удобнее связаться', data.channel],
+          ['Телефон', data.phone]
+        ].filter(([,v]) => v).map(([k,v]) => `${k} - ${v}`).join('\n');
+        const sendTo = (qChannel && qChannel.value) || 'email';
+        if (sendTo === 'telegram') {
+          window.location.href = `https://t.me/+79171647077?text=${encodeURIComponent(lines)}`;
+          return;
+        }
+        if (sendTo === 'whatsapp') {
+          window.location.href = `https://api.whatsapp.com/send/?phone=79171647077&text=${encodeURIComponent('Обращение из Яндекс Карт\n\nЗдравствуйте! Меня заинтересовало ваше предложение')}`;
+          return;
+        }
+        const body = encodeURIComponent(lines);
+        if (!action || action.includes('YOUR_FORM_ID')) {
+          window.location.href = `mailto:ris89171647077@gmail.com?subject=${subject}&body=${body}`;
+          return;
+        }
+        document.body.appendChild(form);
+        form.submit();
+      });
+
+      render();
+    })();
+
+    (function(){
+      const intro = document.getElementById('intro');
+      const enter = document.getElementById('introEnter');
+      if (!intro || !enter) return;
+      if (sessionStorage.getItem('ris_intro_dismissed') === '1') {
+        intro.classList.add('is-hidden');
+        return;
+      }
+      enter.addEventListener('click', () => {
+        sessionStorage.setItem('ris_intro_dismissed', '1');
+        intro.classList.add('is-leaving');
+        setTimeout(() => intro.classList.add('is-hidden'), 1200);
+      });
+    })();
+
+    (function(){
+      const modal = document.getElementById('phoneModal');
+      if (!modal) return;
+      const closeBtn = modal.querySelector('.phone-modal__close');
+      const backdrop = modal.querySelector('.phone-modal__backdrop');
+      const numberEl = modal.querySelector('.phone-modal__number');
+      const open = (phone) => {
+        if (!modal) return;
+        if (phone && numberEl) numberEl.setAttribute('href', `tel:${phone}`);
+        modal.classList.add('is-visible');
+        document.body.style.overflow = 'hidden';
+      };
+      const close = () => {
+        if (!modal) return;
+        modal.classList.remove('is-visible');
+        document.body.style.overflow = '';
+      };
+      document.addEventListener('click', (e) => {
+        const btn = e.target.closest('.phone-open');
+        if (!btn) return;
+        e.preventDefault();
+        open(btn.getAttribute('data-phone'));
+      });
+      if (closeBtn) closeBtn.addEventListener('click', close);
+      if (backdrop) backdrop.addEventListener('click', close);
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') close();
+      });
+    })();
+
+    (function(){
+      const track = document.querySelector('.reviews-track');
+      const slides = document.querySelectorAll('.reviews-slide');
+      const dotsWrap = document.querySelector('.reviews-dots');
+      const prevBtn = document.getElementById('reviewsPrev');
+      const nextBtn = document.getElementById('reviewsNext');
+      if (!track || slides.length === 0) return;
+
+      let current = 0;
+
+      function goTo(i){
+        current = Math.max(0, Math.min(slides.length - 1, i));
+        track.scrollTo({ left: slides[current].offsetLeft, behavior: 'smooth' });
+      }
+      if (prevBtn) prevBtn.addEventListener('click', () => goTo(current - 1));
+      if (nextBtn) nextBtn.addEventListener('click', () => goTo(current + 1));
+
+      function updateDots(){
+        const dots = dotsWrap ? dotsWrap.querySelectorAll('.reviews-dot') : [];
+        dots.forEach((d, i) => d.classList.toggle('active', i === current));
+      }
+
+      track.addEventListener('scroll', () => {
+        const t = track.getBoundingClientRect();
+        let idx = 0;
+        slides.forEach((s, i) => {
+          const r = s.getBoundingClientRect();
+          if (r.left - t.left >= -t.width / 2 && r.left - t.left <= t.width / 2) idx = i;
+        });
+        if (idx !== current) { current = idx; updateDots(); }
+      }, { passive: true });
+
+      if (dotsWrap) {
+        dotsWrap.innerHTML = '';
+        for (let i = 0; i < slides.length; i++) {
+          const d = document.createElement('button');
+          d.className = 'reviews-dot' + (i === 0 ? ' active' : '');
+          d.setAttribute('aria-label', 'Отзыв ' + (i + 1) + ' из ' + slides.length);
+          d.addEventListener('click', () => goTo(i));
+          dotsWrap.appendChild(d);
+        }
+      }
+      updateDots();
+    })();
+  </script>
+</body>
+</html>
