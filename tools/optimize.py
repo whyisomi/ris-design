@@ -212,7 +212,6 @@ def optimize_site_media():
     jobs = [
         # (исходник, результат, макс. сторона, качество, режим)
         ("logo.jpg", "logo.webp", 256, 90, "rgb"),
-        ("instagram.png", "instagram.webp", 128, 90, "png"),
         ("photo1.jpg", "photo1.webp", 1400, 78, "rgb"),
         ("photo2.jpg", "photo2.webp", 1400, 78, "rgb"),
         ("photo3.jpg", "photo3.webp", 1400, 78, "rgb"),

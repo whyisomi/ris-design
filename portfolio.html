@@ -461,16 +461,6 @@
     .back-to-top.show{opacity:1; transform:translateY(0); visibility:visible;}
     .back-to-top:hover{background:#f5f3ef}
 
-    /* FAB */
-    .fab{
-      position:fixed; left:18px; bottom:18px; z-index:60;
-      background:linear-gradient(45deg, #833AB4, #E1306C, #FD1D1D);
-      color:#fff; width:54px; height:54px; border-radius:50%;
-      display:grid; place-items:center; font-weight:700; border:0; cursor:pointer;
-      box-shadow:var(--shadow);
-    }
-    .fab img{width:24px; height:24px; object-fit:contain}
-
     .phone-modal{ position: fixed; inset: 0; z-index: 1000; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity .3s ease, visibility .3s ease; visibility: hidden; }
     .phone-modal.is-visible{ opacity: 1; pointer-events: auto; visibility: visible; }
     .phone-modal__backdrop{ position: absolute; inset: 0; background: rgba(0,0,0,0.45); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
@@ -598,10 +588,6 @@
   </footer>
 
   <button class="back-to-top" id="backToTop" aria-label="Наверх">↑</button>
-
-  <a class="fab" href="https://www.instagram.com/love_ris.design/" target="_blank" rel="noopener" aria-label="Instagram">
-    <img src="media/instagram.webp" alt="Instagram" style="width:24px; height:24px; object-fit:contain;" />
-  </a>
 
   <div id="phoneModal" class="phone-modal" aria-hidden="true">
     <div class="phone-modal__backdrop"></div>

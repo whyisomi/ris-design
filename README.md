@@ -26,7 +26,7 @@
 
 ```
 media/
-  logo.webp, photo1-5.webp, instagram.webp, отзыв1-3.webp
+  logo.webp, photo1-5.webp, отзыв1-3.webp
   portfolio/
     manifest.js                       ← список проектов (window.RIS_PORTFOLIO)
     <project-slug>/
