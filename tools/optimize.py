@@ -26,14 +26,13 @@ import sys
 
 from PIL import Image
 
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from media_utils import (COVER_MAX, FULL_MAX, FULL_Q, THUMB_MAX,  # noqa: E402
+                         THUMB_Q, convert, slugify)
+
 SITE = pathlib.Path(__file__).resolve().parent.parent
 RAW = pathlib.Path(os.environ.get("RIS_ORIGINALS", "/home/iso/rissite-originals"))
 PORTFOLIO = SITE / "media" / "portfolio"
-
-FULL_MAX = 1400
-FULL_Q = 82
-THUMB_MAX = 420
-THUMB_Q = 72
 
 # Обложки подобраны вручную по контактным листам — самые эффектные кадры.
 COVERS = {
@@ -95,19 +94,6 @@ def project_meta(name):
     area = int(m.group(1)) if m else None
     title = re.sub(r"[.,]?\s*\d+\s*кв\.?\s*м\.?\s*$", "", name).strip(" .,")
     return title, area
-
-
-def convert(src, dst, max_side, quality):
-    """JPEG -> WebP с ограничением по длинной стороне. Возвращает размер в байтах."""
-    dst.parent.mkdir(parents=True, exist_ok=True)
-    with Image.open(src) as im:
-        im = im.convert("RGB")
-        w, h = im.size
-        if max(w, h) > max_side:
-            scale = max_side / max(w, h)
-            im = im.resize((round(w * scale), round(h * scale)), Image.LANCZOS)
-        im.save(dst, "WEBP", quality=quality, method=6)
-    return dst.stat().st_size
 
 
 def convert_png(src, dst, max_side, quality):
@@ -187,19 +173,38 @@ def build_portfolio():
             "display": display,
             "area": p_area,
             "areaLabel": f"{p_area} м²" if p_area else "",
+            "section": "design",
             "rooms": rooms,
             "photos": photos_count,
             "cover": cover_rel,
         })
         print(f"  {display:34} {photos_count:3} фото  {len(rooms)} комнат  -> {p_slug}")
 
-    manifest_js = (
-        "/* Сгенерировано tools/optimize.py. Не редактировать вручную. */\n"
-        "window.RIS_PORTFOLIO = " + json.dumps(projects, ensure_ascii=False, indent=1) + ";\n"
-    )
-    (PORTFOLIO / "manifest.js").write_text(manifest_js, encoding="utf-8")
+    write_manifest(projects)
     print(f"  манифест: media/portfolio/manifest.js ({len(projects)} проекта)")
     return projects
+
+
+def write_manifest(projects):
+    """Записывает манифест, сохраняя уже собранные реализованные проекты."""
+    path = PORTFOLIO / "manifest.js"
+    realized = []
+    if path.exists():
+        text = path.read_text(encoding="utf-8")
+        try:
+            old = json.loads(text[text.index("=") + 1:].rstrip().rstrip(";"))
+            realized = [p for p in old if p.get("section") == "realized"]
+        except (ValueError, IndexError):
+            realized = []
+
+    merged = projects + realized
+    manifest_js = (
+        "/* Сгенерировано tools/optimize.py. Не редактировать вручную. */\n"
+        "window.RIS_PORTFOLIO = " + json.dumps(merged, ensure_ascii=False, indent=1) + ";\n"
+    )
+    path.write_text(manifest_js, encoding="utf-8")
+    if realized:
+        print(f"  сохранено реализованных проектов: {len(realized)}")
 
 
 def optimize_site_media():

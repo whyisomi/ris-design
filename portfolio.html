@@ -546,17 +546,10 @@
 
     <section id="realized" class="reveal">
       <div class="container">
-        <div class="section-label">Скоро</div>
+        <div class="section-label">Наши работы</div>
         <h2 class="section-title">Реализованные проекты</h2>
-        <p class="section-sub">Фотографии объектов после ремонта — здесь появятся в ближайшее время.</p>
-        <div class="soon">
-          <div class="soon__mark">📷</div>
-          <h3>Снимаем объекты</h3>
-          <p>Готовим фото- и видеоотчёты по завершённым ремонтам. Раздел наполняется — следите за обновлениями.</p>
-          <div style="margin-top:22px">
-            <a class="btn btn-primary magnetic" href="index.html#contacts">Узнать о сроках</a>
-          </div>
-        </div>
+        <p class="section-sub">Готовые интерьеры после ремонта и отделки — полный цикл работ от плана и сметы до сдачи объекта клиенту.</p>
+        <div class="projects" id="realizedProjects"></div>
       </div>
     </section>
   </main>
@@ -776,28 +769,27 @@
       let photos = [];         // плоский список фото текущей комнаты
       let index = 0;           // индекс фото в просмотрщике
 
+      const designProjects = DATA.filter(p => (p.section || 'design') === 'design');
+      const realizedProjects = DATA.filter(p => p.section === 'realized');
+
       const totalPhotos = DATA.reduce((n, p) => n + p.photos, 0);
       const statProjects = document.getElementById('statProjects');
       const statPhotos = document.getElementById('statPhotos');
-      if (statProjects) statProjects.textContent = DATA.length;
-      if (statPhotos) statPhotos.textContent = totalPhotos;
+      if (statProjects) statProjects.textContent = designProjects.length;
+      if (statPhotos) statPhotos.textContent = designProjects.reduce((n, p) => n + p.photos, 0);
 
       function esc(s){
         return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
       }
 
       /* ---------- карточки проектов ---------- */
-      function renderProjects(){
-        if (!DATA.length){
-          projectsEl.innerHTML = '<p class="section-sub">Проекты скоро появятся.</p>';
-          return;
-        }
-        projectsEl.innerHTML = DATA.map((p, i) => `
+      function cardHtml(p, i, badge, altText){
+        return `
           <button class="project reveal" data-idx="${i}" style="transition-delay:${i * 90}ms">
             <div class="project__media">
-              ${p.cover ? `<img src="${p.cover}" alt="${esc(p.title)} — дизайн-проект" loading="lazy" />` : ''}
+              ${p.cover ? `<img src="${p.cover}" alt="${esc(altText || p.title)}" loading="lazy" />` : ''}
               <div class="project__badges">
-                <span class="badge badge--gold">Дизайн-проект</span>
+                <span class="badge badge--gold">${esc(badge)}</span>
                 ${p.areaLabel ? `<span class="badge">${esc(p.areaLabel)}</span>` : ''}
               </div>
               <div class="project__zoom">↗</div>
@@ -814,19 +806,42 @@
               <div class="project__cta">Смотреть альбом <span class="arrow">→</span></div>
             </div>
           </button>
-        `).join('');
+        `;
+      }
 
-        projectsEl.querySelectorAll('.project').forEach(el => {
-          el.addEventListener('click', () => openAlbum(Number(el.dataset.idx)));
+      function bindCards(container, list){
+        if (!container) return;
+        container.querySelectorAll('.project').forEach(el => {
+          el.addEventListener('click', () => openAlbum(list[Number(el.dataset.idx)]));
         });
-        // анимация появления карточек
-        const cards = projectsEl.querySelectorAll('.project');
         const cardObs = new IntersectionObserver((entries) => {
           entries.forEach(e => {
             if (e.isIntersecting){ e.target.classList.add('in'); cardObs.unobserve(e.target); }
           });
         }, { threshold: 0.1 });
-        cards.forEach(c => cardObs.observe(c));
+        container.querySelectorAll('.project').forEach(c => cardObs.observe(c));
+      }
+
+      function renderProjects(){
+        if (!designProjects.length){
+          projectsEl.innerHTML = '<p class="section-sub">Проекты скоро появятся.</p>';
+          return;
+        }
+        projectsEl.innerHTML = designProjects.map((p, i) =>
+          cardHtml(p, i, 'Дизайн-проект', p.title + ' — дизайн-проект')).join('');
+        bindCards(projectsEl, designProjects);
+      }
+
+      function renderRealized(){
+        const el = document.getElementById('realizedProjects');
+        if (!el) return;
+        if (!realizedProjects.length){
+          el.innerHTML = '<p class="section-sub">Объекты скоро появятся.</p>';
+          return;
+        }
+        el.innerHTML = realizedProjects.map((p, i) =>
+          cardHtml(p, i, 'Реализованный', p.title + ' — реализованный проект')).join('');
+        bindCards(el, realizedProjects);
       }
 
       function plural(n, one, few, many){
@@ -837,8 +852,8 @@
       }
 
       /* ---------- альбом ---------- */
-      function openAlbum(idx){
-        current = DATA[idx];
+      function openAlbum(project){
+        current = project;
         currentRoom = 0;
         albumName.textContent = current.display || current.title;
 
@@ -949,6 +964,7 @@
       }, { passive: true });
 
       renderProjects();
+      renderRealized();
     })();
   </script>
 </body>
