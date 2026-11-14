@@ -222,6 +222,7 @@ def optimize_site_media():
         ("photo3.jpg", "photo3.webp", 1400, 78, "rgb"),
         ("photo4.jpg", "photo4.webp", 1920, 74, "rgb"),
         ("photo5.jpg", "photo5.webp", 1280, 78, "rgb"),
+        ("portfolio-hero.jpg", "portfolio-hero.webp", 1920, 78, "rgb"),
         ("отзыв1@2x.png", "отзыв1.webp", 1228, 86, "png"),
         ("отзыв2@2x.png", "отзыв2.webp", 1258, 86, "png"),
         ("отзыв3@2x.png", "отзыв3.webp", 1228, 86, "png"),
