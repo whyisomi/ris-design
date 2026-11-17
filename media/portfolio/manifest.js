@@ -635,7 +635,7 @@ window.RIS_PORTFOLIO = [
     ]
    },
    {
-    "name": "спальня",
+    "name": "Спальня",
     "slug": "spalnya",
     "photos": [
      {
@@ -873,7 +873,7 @@ window.RIS_PORTFOLIO = [
     ]
    },
    {
-    "name": "кабинет",
+    "name": "Кабинет",
     "slug": "kabinet",
     "photos": [
      {

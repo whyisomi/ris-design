@@ -87,6 +87,12 @@ def room_slug(name):
     return slugify(key)
 
 
+def pretty_room_name(name):
+    """Название комнаты всегда с большой буквы: 'спальня' -> 'Спальня'."""
+    name = str(name).strip()
+    return name[:1].upper() + name[1:] if name else name
+
+
 def project_meta(name):
     """'ЖК Волжские огни. 112 кв.м.' -> (title, area)."""
     base = name.rsplit(".", 1)[0].strip() if name.strip().endswith(".") else name.strip()
@@ -125,7 +131,7 @@ def build_portfolio():
         rooms = []
         all_photos = []
         for room in project["rooms"]:
-            r_name = room["name"].strip()
+            r_name = pretty_room_name(room["name"])
             r_slug = room_slug(r_name)
             files = sorted(room["files"], key=lambda f: natkey(f["name"]))
             photos = []
@@ -198,6 +204,9 @@ def write_manifest(projects):
             realized = []
 
     merged = projects + realized
+    for p in merged:
+        for r in p.get("rooms", []):
+            r["name"] = pretty_room_name(r["name"])
     manifest_js = (
         "/* Сгенерировано tools/optimize.py. Не редактировать вручную. */\n"
         "window.RIS_PORTFOLIO = " + json.dumps(merged, ensure_ascii=False, indent=1) + ";\n"
