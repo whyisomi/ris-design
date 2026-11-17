@@ -9,5 +9,6 @@ __pycache__/
 # Временное
 _test.html
 _t.html
+_p.html
 *.part
 *.log
