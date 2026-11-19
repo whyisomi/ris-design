@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Черновики страниц услуг — РИС-Дизайн</title>
+  <link rel="icon" href="../media/favicon.ico" sizes="any" />
+  <link rel="stylesheet" href="draft.css" />
+  <style>
+    .hero{padding:56px 0 52px;background:linear-gradient(180deg,#fff,#f2eee8)}
+    .hero h1{font-size:clamp(28px,3.6vw,44px);margin-bottom:10px}
+    .hero .lead{margin-bottom:0}
+    .preview-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .preview-card{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px;box-shadow:var(--shadow-sm)}
+    .preview-card .tag{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-2);margin-bottom:10px}
+    .preview-card h2{font-size:21px;margin:0 0 8px}
+    .preview-card p{color:#4a4a4a;font-size:15px;margin:0 0 18px;flex:1}
+    .preview-card .btn{align-self:flex-start}
+    .preview-note{margin-top:26px;color:var(--muted);font-size:14px}
+    .preview-note code{background:#efe9df;color:#3a3a3a;padding:2px 6px;border-radius:6px;font-size:13px}
+    @media (max-width:980px){.preview-grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <div class="draft-bar" role="region" aria-label="Статус черновика"><b>Черновики</b> · локальный просмотр · на хостинг не выгружены</div>
+
+  <header class="header">
+    <div class="container">
+      <a href="../index.html"><img class="logo" src="../media/logo.webp" alt="РИС-Дизайн логотип" width="256" height="256" /></a>
+      <nav class="nav">
+        <a href="../index.html">Главная</a>
+        <a href="design-project.html">Дизайн-проект</a>
+        <a href="remont-pod-klyuch.html">Ремонт под ключ</a>
+        <a href="ceny.html">Цены</a>
+        <a href="../portfolio.html">Портфолио</a>
+      </nav>
+      <a class="header-cta" href="tel:+79171647077">Позвонить</a>
+      <button class="mobile-menu-btn" aria-label="Меню">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h1>Черновики страниц услуг</h1>
+        <p class="lead">Три страницы для будущего SEO-раздела. Закрыты от индексации, на хостинг не выгружены. Посмотрите структуру, тексты и дизайн.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="preview-grid">
+          <article class="preview-card">
+            <div class="tag">Услуга</div>
+            <h2>Дизайн-проект квартиры</h2>
+            <p>Планировка, 3D-визуализации, чертежи, ведомость материалов и сметы. Цена-ориентир и частые вопросы.</p>
+            <a class="btn btn-primary" href="design-project.html">Открыть черновик</a>
+          </article>
+          <article class="preview-card">
+            <div class="tag">Услуга</div>
+            <h2>Ремонт под ключ</h2>
+            <p>Состав работ, этапы, смета, гарантия, примеры реализованных объектов и ответы на вопросы.</p>
+            <a class="btn btn-primary" href="remont-pod-klyuch.html">Открыть черновик</a>
+          </article>
+          <article class="preview-card">
+            <div class="tag">Цены</div>
+            <h2>Цены на проект и ремонт</h2>
+            <p>Ориентиры по стоимости, что входит в цену, что влияет на смету и как получить точный расчёт.</p>
+            <a class="btn btn-primary" href="ceny.html">Открыть черновик</a>
+          </article>
+        </div>
+        <p class="preview-note">Перед публикацией: убрать <code>noindex</code> и полосу «Черновик», проверить цены, добавить ссылки в меню и подвал, обновить <code>sitemap.xml</code>.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div>
+        <h3>Навигация</h3>
+        <a href="../index.html">Главная</a>
+        <a href="design-project.html">Дизайн-проект</a>
+        <a href="remont-pod-klyuch.html">Ремонт под ключ</a>
+        <a href="ceny.html">Цены</a>
+        <a href="../portfolio.html">Портфолио</a>
+        <a href="../personal.html">Персональные данные</a>
+      </div>
+      <div>
+        <h3>Контакты</h3>
+        <a href="tel:+79171647077">+7 (917) 164-70-77</a>
+        <a href="https://t.me/+79171647077" target="_blank" rel="noopener">Telegram</a>
+        <a href="https://max.ru/u/f9LHodD0cOJGmcOdPlXkOn9G2quiw97UGvy4poR3KUaQvVkYbkO44LMCE9c" target="_blank" rel="noopener">MAX</a>
+        <a href="https://vk.ru/ris_design" target="_blank" rel="noopener">ВКонтакте</a>
+        <a href="https://yandex.ru/maps/org/ris_dizayn/162965584925/" target="_blank" rel="noopener">Яндекс Карты</a>
+        <p style="margin-top:6px">Самара, ул. Буянова, 16<br />Пн–Пт 10:00–18:00</p>
+      </div>
+    </div>
+    <div class="footer-bottom">© РИС-Дизайн. Все права защищены.</div>
+  </footer>
+
+  <script>
+    document.querySelector('.mobile-menu-btn').addEventListener('click', () => {
+      const nav = document.querySelector('.nav');
+      const open = nav.style.display === 'flex';
+      nav.style.display = open ? 'none' : 'flex';
+      if (!open) {
+        nav.style.position = 'absolute';
+        nav.style.top = '70px';
+        nav.style.left = '0';
+        nav.style.right = '0';
+        nav.style.background = '#fff';
+        nav.style.borderBottom = '1px solid #e6e3df';
+        nav.style.padding = '14px 20px';
+        nav.style.flexDirection = 'column';
+        nav.style.gap = '12px';
+      }
+    });
+  </script>
+</body>
+</html>
