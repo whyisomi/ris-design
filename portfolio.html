@@ -86,7 +86,7 @@
       transition:transform .2s var(--ease), box-shadow .2s ease;
     }
     .header-cta:hover{transform:translateY(-2px); box-shadow:var(--shadow-sm)}
-    .mobile-menu-btn{display:none; background:none; border:0; cursor:pointer}
+    .mobile-menu-btn{display:none; background:none; border:0; cursor:pointer; min-width:44px; min-height:44px; align-items:center; justify-content:center; font-size:24px; line-height:1}
 
     /* Scroll progress */
     .scroll-progress{
@@ -452,7 +452,7 @@
     }
     .footer h4::after{content:""; flex:1; height:1px; background:rgba(255,255,255,.55)}
     .footer a, .footer p{color:#fff; font-size:15px}
-    .footer a{display:block; margin:0 0 14px; position:relative; line-height:1.5}
+    .footer a{display:block; margin:0 0 10px; position:relative; line-height:1.5; padding:6px 0}
     .footer a[href^="#"]::after{
       content:""; position:absolute; left:0; right:0; bottom:2px;
       height:2px; border-radius:2px;
@@ -500,9 +500,15 @@
     }
     .reveal.in{opacity:1; transform:none;}
 
+    @media (max-width: 640px){
+      .nav a{padding:10px 0}
+      .footer{background-size:auto 320px; min-height:0}
+      .footer .container{padding:200px 20px 50px}
+    }
+
     @media (max-width: 980px){
       .nav{display:none}
-      .mobile-menu-btn{display:block}
+      .mobile-menu-btn{display:flex}
       .projects{grid-template-columns:1fr}
       .footer .container{grid-template-columns:1fr; padding:200px 20px 50px; gap:30px}
       .album__grid{grid-template-columns: repeat(auto-fill, minmax(150px, 1fr))}
@@ -657,7 +663,7 @@
       nav.style.display = open ? 'none' : 'flex';
       if (!open) {
         nav.style.position = 'absolute';
-        nav.style.top = '68px';
+        nav.style.top = '70px';
         nav.style.left = '0';
         nav.style.right = '0';
         nav.style.background = '#fff';
@@ -673,8 +679,7 @@
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('in');
-        } else {
-          entry.target.classList.remove('in');
+          observer.unobserve(entry.target);
         }
       });
     }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
@@ -722,9 +727,11 @@
         const nav = document.querySelector('.nav');
         if (nav && nav.style.display === 'flex') nav.style.display = 'none';
         e.preventDefault();
-        target.classList.remove('in');
+        target.classList.add('in');
+        target.style.transition = 'none';
+        target.style.transform = 'none';
         target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        setTimeout(() => target.classList.add('in'), 600);
+        setTimeout(() => { target.style.transition = ''; target.style.transform = ''; }, 800);
       });
     });
 
