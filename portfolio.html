@@ -820,10 +820,6 @@
             </div>
             <div class="project__body">
               <h3 class="project__title">${esc(p.display || p.title)}</h3>
-              <div class="project__meta">
-                <span>📷 ${p.photos} фото</span>
-                ${roomMetric(p)}
-              </div>
               <div class="project__rooms">
                 ${p.rooms.map(r => `<span class="room-chip">${esc(r.name)}</span>`).join('')}
               </div>
