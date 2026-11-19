@@ -322,7 +322,11 @@
     /* Map */
     .map-wrap{border-radius:var(--radius); overflow:hidden; border:1px solid var(--line); box-shadow:var(--shadow-sm); background:#fff}
     .map-preview{position:relative; display:block; overflow:hidden}
+    .map-preview picture{display:block}
     .map-preview__img{width:100%; height:auto; transition:transform .7s cubic-bezier(0.22,1,0.36,1)}
+    @media (max-width:640px){
+      .map-preview__img{height:230px; object-fit:cover; object-position:center}
+    }
     .map-preview__hint{
       position:absolute; left:14px; bottom:14px;
       display:inline-flex; align-items:center; gap:7px;
@@ -697,7 +701,10 @@
       <h2 class="section-title">Мы на карте</h2>
       <div class="map-wrap">
         <a class="map-preview" href="https://yandex.ru/maps/org/ris_dizayn/162965584925/?ll=50.116469%2C53.191614&z=16" target="_blank" rel="noopener" aria-label="РИС-Дизайн на карте: Самара, ул. Буянова, 16 — открыть в Яндекс Картах">
-          <img class="map-preview__img" src="media/map-preview.webp" width="1200" height="420" alt="Карта: студия РИС-Дизайн — Самара, ул. Буянова, 16" loading="lazy" decoding="async" />
+          <picture>
+            <source srcset="media/map-preview.webp?v=2" type="image/webp" />
+            <img class="map-preview__img" src="media/map-preview.jpg?v=2" width="1200" height="420" alt="Карта: студия РИС-Дизайн — Самара, ул. Буянова, 16" decoding="async" />
+          </picture>
           <span class="map-preview__hint">Открыть карту <span>↗</span></span>
         </a>
       </div>
