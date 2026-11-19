@@ -949,6 +949,7 @@
       }
       form.addEventListener('submit', function(e) {
         const action = (form.getAttribute('action') || '').trim();
+        if (window.risGoal) window.risGoal('contact_submit');
         if (!action || action.includes('YOUR_FORM_ID')) {
           e.preventDefault();
           const formData = new FormData(form);
@@ -1080,6 +1081,7 @@
           phone: phone,
           source: 'quiz'
         };
+        if (window.risGoal) window.risGoal('quiz_submit');
         const form = getMailForm(data);
         const action = (form.getAttribute('action') || '').trim();
         const subject = encodeURIComponent('Заявка с сайта РИС-Дизайн');
@@ -1235,5 +1237,33 @@
       }
     });
   </script>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=114378335', 'ym');
+
+    ym(114378335, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/114378335" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+<script>
+(function(){
+  function goal(name){ if (typeof window.ym === 'function') window.ym(114378335, 'reachGoal', name); }
+  window.risGoal = goal;
+  document.addEventListener('click', function(e){
+    var a = e.target && e.target.closest ? e.target.closest('a') : null;
+    if (!a) return;
+    var href = a.getAttribute('href') || '';
+    if (href.indexOf('tel:') === 0) goal('phone_click');
+    else if (href.indexOf('https://t.me/') === 0) goal('telegram_click');
+    else if (href.indexOf('https://max.ru/') === 0) goal('max_click');
+    else if (href.indexOf('https://api.whatsapp.com/') === 0) goal('whatsapp_click');
+  }, true);
+})();
+</script>
 </body>
 </html>
