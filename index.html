@@ -320,6 +320,7 @@
     }
     textarea{min-height:120px; resize:vertical}
     .form-note{font-size:12px; color:var(--muted); margin:4px 0 0}
+    .form-note a{color:var(--accent-2); text-decoration:underline; text-underline-offset:2px}
 
     /* Map */
     .map-wrap{border-radius:var(--radius); overflow:hidden; border:1px solid var(--line); box-shadow:var(--shadow-sm); background:#fff}
@@ -356,9 +357,11 @@
     .quiz .opt:hover{border-color:var(--accent); background:#faf8f5}
     .quiz .opt.sel{border-color:var(--accent); background:#f5efe6}
     .quiz .q-foot{margin-top:18px; display:flex; align-items:center; justify-content:space-between; gap:10px}
-    .quiz .q-agree{font-size:13px; color:var(--muted); margin:12px 0 4px; display:inline-flex; align-items:center; gap:6px; vertical-align:middle; line-height:1.2}
-    .quiz .q-agree input[type="checkbox"]{width:16px; height:16px; accent-color:var(--accent); flex-shrink:0; vertical-align:middle}
-    .quiz .q-agree label{vertical-align:middle; line-height:1.2}
+    .quiz .q-agree{font-size:13px; color:var(--muted); margin:12px 0 4px; display:flex; align-items:flex-start; gap:8px; line-height:1.35}
+    .quiz .q-agree input[type="checkbox"]{width:16px; height:16px; accent-color:var(--accent); flex-shrink:0; margin-top:2px}
+    .quiz .q-agree label{line-height:1.35}
+    .quiz .q-agree a{color:var(--accent-2); text-decoration:underline; text-underline-offset:2px; line-height:1.35}
+    .quiz .q-final small a{color:var(--accent-2); text-decoration:underline; text-underline-offset:2px}
     .quiz .q-final h3{font-size:22px; margin:0 0 10px}
     .quiz .q-final p{color:#3a3a3a; margin:0 0 14px; font-size:16px; line-height:1.6}
     .quiz .q-phone{display:flex; align-items:center; gap:10px; border:1px solid var(--line); border-radius:999px; padding:12px 16px; background:#fff}
@@ -422,7 +425,7 @@
     .footer-bottom{border-top:1px solid rgba(255,255,255,.12); padding:18px 20px; text-align:center; font-size:13px; color:#9a9793}
 
     @media (max-width: 640px){
-      .footer{background-size:auto 320px; min-height:0}
+      .footer{background-size:auto 72vw; min-height:0}
       .footer .container{padding:200px 20px 50px}
     }
 
@@ -446,6 +449,7 @@
       .advantages-grid, .services-grid, .process-list, .reviews-grid{grid-template-columns: repeat(2, 1fr)}
       .gallery{grid-template-columns: repeat(2, 1fr)}
       .about-grid, .contacts-grid{grid-template-columns: 1fr}
+      .footer{background-size:auto 72vw}
       .footer .container{grid-template-columns:1fr; padding:200px 20px 50px; gap:30px}
     }
     @media (max-width: 560px){
@@ -552,7 +556,7 @@
                 <input type="tel" id="qPhone" placeholder="+7 (___) ___-__-__" />
               </div>
               <div class="q-agree">
-                <input type="checkbox" id="qAgree" /> <label for="qAgree">Я согласен на обработку персональных данных</label>
+                <input type="checkbox" id="qAgree" /> <span><label for="qAgree">Я согласен на обработку персональных данных</label> <a href="personal.html" target="_blank" rel="noopener">(текст согласия)</a></span>
               </div>
               <div class="q-channel">
                 <label class="q-channel__label" for="qChannel">Куда отправить заявку?</label>
@@ -562,7 +566,7 @@
                 </select>
               </div>
               <button class="btn btn-primary magnetic" id="qSubmit" style="margin-top:12px; width:100%">Отправить заявку</button>
-              <small>Нажимая кнопку, вы соглашаетесь с обработкой данных.</small>
+              <small>Нажимая кнопку, вы соглашаетесь с <a href="personal.html" target="_blank" rel="noopener">обработкой персональных данных</a>.</small>
             </div>
           </div>
         </div>
@@ -682,7 +686,7 @@
             <input type="text" name="object" placeholder="Объект: квартира, дом, офис" />
             <textarea name="message" placeholder="Кратко опишите задачу: ремонт, дизайн, отделка"></textarea>
             <button class="btn btn-primary" type="submit">Отправить заявку</button>
-            <p class="form-note">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных.</p>
+            <p class="form-note">Нажимая кнопку, вы соглашаетесь с <a href="personal.html" target="_blank" rel="noopener">обработкой персональных данных</a>.</p>
           </form>
         </div>
         <div class="contact-card">
@@ -727,6 +731,7 @@
         <a href="portfolio.html">Наши работы</a>
         <a href="#process">Как мы работаем</a>
         <a href="#contacts">Контакты</a>
+        <a href="personal.html">Персональные данные</a>
       </div>
       <div>
         <h4>Контакты</h4>

@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Обработка персональных данных — РИС-Дизайн</title>
+  <meta name="description" content="Согласие на обработку персональных данных и политика обработки персональных данных сайта РИС-Дизайн (ris-design63.ru)." />
+  <link rel="icon" href="media/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" href="media/favicon-32.png" />
+  <link rel="apple-touch-icon" href="media/apple-touch-icon.png" />
+  <link rel="canonical" href="https://ris-design63.ru/personal.html" />
+  <meta name="theme-color" content="#f7f5f2" />
+  <meta property="og:locale" content="ru_RU" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="РИС-Дизайн" />
+  <meta property="og:title" content="Обработка персональных данных — РИС-Дизайн" />
+  <meta property="og:description" content="Согласие на обработку персональных данных и политика обработки персональных данных сайта ris-design63.ru." />
+  <meta property="og:url" content="https://ris-design63.ru/personal.html" />
+  <meta property="og:image" content="https://ris-design63.ru/media/og-cover.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <style>
+    :root{
+      --bg:#f7f5f2;
+      --ink:#1a1a1a;
+      --muted:#6b6b6b;
+      --line:#e6e3df;
+      --card:#ffffff;
+      --accent:#c5924a;
+      --accent-2:#b07033;
+      --shadow: 0 20px 60px rgba(20,20,20,0.08);
+      --shadow-sm: 0 10px 30px rgba(20,20,20,0.06);
+      --radius: 14px;
+      --max: 1160px;
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      background:var(--bg);
+      color:var(--ink);
+      line-height:1.55;
+      -webkit-font-smoothing:antialiased;
+    }
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{max-width:var(--max);margin:0 auto;padding:0 20px}
+
+    /* Header */
+    .header{
+      position:sticky; top:0; z-index:50;
+      background:rgba(255,255,255,0.72);
+      backdrop-filter:saturate(140%) blur(14px);
+      border-bottom:1px solid var(--line);
+    }
+    .header .container{display:flex; align-items:center; justify-content:space-between; padding-top:14px; padding-bottom:14px}
+    .logo{height:38px; width:auto; border-radius:6px}
+    .nav{display:flex; gap:26px}
+    .nav a{
+      font-size:14px; font-weight:500; color:var(--muted);
+      transition:color .2s;
+      position:relative;
+    }
+    .nav a::after{
+      content:""; position:absolute; left:0; right:0; bottom:2px;
+      height:2px; border-radius:2px;
+      background:var(--accent);
+      transform:scaleX(0);
+      transform-origin:left center;
+      transition:transform .35s var(--ease);
+    }
+    @media (hover:hover) and (pointer:fine){
+      .nav a:hover{color:var(--ink)}
+      .nav a:hover::after{transform:scaleX(1)}
+      .nav a:focus-visible::after{transform:scaleX(1)}
+    }
+    .header-cta{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:10px 16px; border-radius:999px; font-weight:600; font-size:14px;
+      background:var(--ink); color:#fff; border:0; cursor:pointer;
+    }
+    .mobile-menu-btn{display:none; background:none; border:0; cursor:pointer; min-width:44px; min-height:44px; align-items:center; justify-content:center; font-size:24px; line-height:1; color:var(--ink)}
+
+    /* Page hero */
+    .page-hero{
+      position:relative; overflow:hidden;
+      padding:56px 0 34px;
+      background:linear-gradient(180deg, #ffffff, var(--bg));
+      border-bottom:1px solid var(--line);
+    }
+    .page-hero::before{
+      content:""; position:absolute; right:-140px; top:-180px;
+      width:460px; height:460px; border-radius:50%;
+      background:rgba(197,146,74,0.16); filter:blur(70px); pointer-events:none;
+    }
+    .page-hero .container{position:relative; z-index:1}
+    .back-home{
+      display:inline-flex; align-items:center; gap:8px;
+      font-size:14px; color:var(--muted); margin-bottom:22px;
+      padding:8px 0; transition:color .2s;
+    }
+    .back-home:hover{color:var(--ink)}
+    .section-label{
+      font-size:12px; text-transform:uppercase; letter-spacing:.12em;
+      font-weight:700; color:var(--accent); margin-bottom:12px;
+    }
+    .page-hero h1{
+      font-size:clamp(30px, 4.2vw, 50px);
+      line-height:1.14; letter-spacing:-0.02em;
+      margin:0 0 16px; max-width:900px;
+    }
+    .page-hero .lead{
+      font-size:clamp(15px, 1.6vw, 18px); color:#3a3a3a;
+      max-width:720px; margin:0 0 24px;
+    }
+    .doc-nav{display:flex; flex-wrap:wrap; gap:10px; margin-top:26px}
+    .doc-nav a{
+      display:inline-flex; align-items:center; min-height:42px;
+      padding:10px 18px; border-radius:999px;
+      border:1px solid var(--line); background:#fff;
+      font-size:14px; font-weight:600; color:var(--ink);
+      transition:border-color .2s, background .2s, box-shadow .2s;
+    }
+    .doc-nav a:hover{border-color:var(--accent); background:#faf6ef; box-shadow:var(--shadow-sm)}
+    .operator{
+      display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
+      gap:14px 26px; margin-top:28px; padding:18px 20px;
+      background:#fff; border:1px solid var(--line); border-radius:var(--radius);
+      box-shadow:var(--shadow-sm); max-width:920px;
+    }
+    .operator div{font-size:14px; line-height:1.5; color:#3a3a3a}
+    .operator b{display:block; font-size:11px; letter-spacing:.09em; text-transform:uppercase; color:var(--accent); margin-bottom:3px}
+    .operator a{color:var(--accent-2); border-bottom:1px solid rgba(176,112,51,.35)}
+
+    /* Documents */
+    main.doc-wrap{padding:34px 0 64px}
+    .doc-card{
+      background:var(--card); border:1px solid var(--line);
+      border-radius:18px; box-shadow:var(--shadow);
+      padding:clamp(22px, 4.5vw, 56px);
+      max-width:980px; margin:0 auto 30px;
+      scroll-margin-top:96px;
+    }
+    .doc-card h2{
+      font-size:clamp(23px, 3.2vw, 34px);
+      line-height:1.2; letter-spacing:-0.015em;
+      margin:0 0 22px; padding-bottom:18px;
+      border-bottom:1px solid var(--line);
+    }
+    .doc-intro{font-size:16px; line-height:1.7; color:#333; margin:0 0 8px}
+    .doc h3{
+      font-size:clamp(18px, 2.2vw, 21px);
+      line-height:1.3; margin:34px 0 12px; letter-spacing:-0.01em;
+    }
+    .doc h3:first-of-type{margin-top:26px}
+    .doc p{font-size:16px; line-height:1.7; color:#333; margin:0 0 12px}
+    .doc ul{list-style:none; margin:0 0 16px; padding:0}
+    .doc li{
+      position:relative; padding-left:22px; margin:0 0 8px;
+      font-size:16px; line-height:1.65; color:#333;
+    }
+    .doc li::before{
+      content:""; position:absolute; left:2px; top:.72em;
+      width:7px; height:7px; border-radius:50%;
+      background:var(--accent); opacity:.85;
+    }
+    .doc a{color:var(--accent-2); text-decoration:underline; text-underline-offset:3px; text-decoration-thickness:1px}
+    .doc a:hover{color:var(--accent)}
+    .doc strong{font-weight:600; color:var(--ink)}
+    .defs{margin:0 0 16px}
+    .defs p{margin:0 0 10px}
+    .table-scroll{width:100%; overflow-x:auto; margin:6px 0 18px; border:1px solid var(--line); border-radius:12px}
+    .doc-table{width:100%; border-collapse:collapse; font-size:15px; line-height:1.55; min-width:560px}
+    .doc-table th{
+      text-align:left; font-size:12px; text-transform:uppercase; letter-spacing:.07em;
+      color:#6a6257; background:#f5f1ea; padding:13px 16px;
+      border-bottom:1px solid var(--line); font-weight:700;
+    }
+    .doc-table td{padding:13px 16px; border-bottom:1px solid var(--line); vertical-align:top; color:#333}
+    .doc-table tr:last-child td{border-bottom:0}
+    .doc-table td:first-child{width:46%; font-weight:500; color:var(--ink)}
+    .doc-note{
+      margin-top:26px; padding:16px 18px; border-radius:12px;
+      background:#faf7f1; border:1px solid #efe4d3;
+      font-size:14px; color:#5a5247; line-height:1.6;
+    }
+    .doc-note a{color:var(--accent-2)}
+    .to-top{display:inline-flex; align-items:center; gap:6px; margin-top:6px; font-size:14px; font-weight:600; color:var(--muted)}
+    .to-top:hover{color:var(--ink)}
+
+    /* Footer */
+    .footer{
+      position:relative;
+      color:#fff;
+      background-color:#1a1a1a;
+      background-image:
+        linear-gradient(180deg, rgba(17,17,17,0.45), rgba(17,17,17,0.72)),
+        url('media/futter.webp?v=3');
+      background-size:cover;
+      background-position:left top;
+      background-repeat:no-repeat;
+      min-height:600px;
+    }
+    .footer .container{
+      max-width:none; width:100%; margin:0;
+      padding:250px 20px 70px 40px;
+      display:grid; grid-template-columns:repeat(2, 260px);
+      gap:40px 90px; justify-content:start; align-items:start;
+    }
+    .footer h4{
+      margin:0 0 22px; font-size:18px; font-weight:700; color:#fff;
+      display:flex; align-items:center; gap:16px;
+    }
+    .footer h4::after{content:""; flex:1; height:1px; background:rgba(255,255,255,.55)}
+    .footer a, .footer p{color:#fff; font-size:15px}
+    .footer a{display:block; margin:0 0 10px; position:relative; line-height:1.5; padding:6px 0}
+    .footer a[href^="#"]::after{
+      content:""; position:absolute; left:0; right:0; bottom:2px;
+      height:2px; border-radius:2px;
+      background:var(--accent);
+      transform:scaleX(0);
+      transform-origin:left center;
+      transition:transform .35s var(--ease);
+    }
+    @media (hover:hover) and (pointer:fine){
+      .footer a[href^="#"]:hover::after{transform:scaleX(1)}
+      .footer a[href^="#"]:focus-visible::after{transform:scaleX(1)}
+    }
+    .footer-bottom{border-top:1px solid rgba(255,255,255,.12); padding:18px 20px; text-align:center; font-size:13px; color:#9a9793}
+
+    @media (max-width: 980px){
+      .nav{display:none}
+      .mobile-menu-btn{display:flex}
+      .nav a{padding:10px 0}
+      .footer{background-size:auto 72vw}
+      .footer .container{grid-template-columns:1fr; padding:200px 20px 50px; gap:30px}
+    }
+    @media (max-width: 640px){
+      .page-hero{padding:40px 0 26px}
+      .back-home{margin-bottom:18px}
+      .operator{padding:16px; gap:12px}
+      main.doc-wrap{padding:22px 0 46px}
+      .doc-card{border-radius:14px; padding:22px 18px; margin-bottom:20px}
+      .doc h3{margin-top:28px}
+      .doc p, .doc li{font-size:15.5px}
+      .doc-table{min-width:0}
+      .table-scroll{overflow:visible; border:0; border-radius:0}
+      .doc-table, .doc-table tbody, .doc-table tr, .doc-table td{display:block; width:100%}
+      .doc-table thead{display:none}
+      .doc-table tr{border:1px solid var(--line); border-radius:12px; margin-bottom:10px; overflow:hidden}
+      .doc-table td{border:0; padding:12px 14px}
+      .doc-table td:first-child{width:100%; background:#f5f1ea; border-bottom:1px solid var(--line)}
+      .doc-table td:last-child{padding-top:10px; padding-bottom:14px}
+      .doc-table td[data-label]::before{
+        content:attr(data-label); display:block;
+        font-size:10px; letter-spacing:.08em; text-transform:uppercase;
+        color:var(--accent); font-weight:700; margin-bottom:3px;
+      }
+      .footer{background-size:auto 72vw; min-height:0}
+      .footer .container{padding:200px 20px 50px}
+    }
+    @media (prefers-reduced-motion: reduce){
+      html{scroll-behavior:auto}
+      *{animation-duration:.01ms !important; transition-duration:.01ms !important}
+    }
+    @media print{
+      .header, .footer, .back-home, .doc-nav, .to-top, .operator{display:none !important}
+      body{background:#fff}
+      main.doc-wrap{padding:0}
+      .doc-card{box-shadow:none; border:0; border-radius:0; max-width:none; padding:0; margin:0 0 28px}
+      .doc h3, .doc-table tr{break-inside:avoid}
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <a href="index.html"><img class="logo" src="media/logo.webp" alt="РИС-Дизайн логотип" /></a>
+      <nav class="nav">
+        <a href="index.html#services">Услуги</a>
+        <a href="portfolio.html">Наши работы</a>
+        <a href="index.html#process">Как мы работаем</a>
+        <a href="index.html#contacts">Контакты</a>
+      </nav>
+      <a class="header-cta" href="tel:+79171647077">Позвонить</a>
+      <button class="mobile-menu-btn" aria-label="Меню">☰</button>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <div class="container">
+      <a class="back-home" href="index.html">← На главную</a>
+      <div class="section-label">Правовая информация</div>
+      <h1>Обработка персональных данных</h1>
+      <p class="lead">Согласие на обработку персональных данных и политика обработки персональных данных сайта ris-design63.ru.</p>
+      <div class="operator">
+        <div><b>Оператор</b>ИП Курилкина Татьяна Александровна</div>
+        <div><b>ИНН / ОГРНИП</b>631505533047 / 314631203100035</div>
+        <div><b>Адрес</b>г. Самара, пр-кт Металлургов, д. 54, кв. 55</div>
+        <div><b>Электронная почта</b><a href="mailto:ris89171647077@gmail.com">ris89171647077@gmail.com</a></div>
+      </div>
+      <nav class="doc-nav" aria-label="Документы">
+        <a href="#consent">Согласие на обработку данных</a>
+        <a href="#policy">Политика обработки данных</a>
+      </nav>
+    </div>
+  </section>
+
+  <main class="doc-wrap">
+    <div class="container">
+      <article class="doc-card doc" id="consent">
+        <h2>Согласие на обработку персональных данных</h2>
+        <p class="doc-intro">Настоящим я, пользователь сайта <a href="https://ris-design63.ru">https://ris-design63.ru</a>, свободно, своей волей и в своем интересе, даю согласие оператору персональных данных Индивидуальному предпринимателю Курилкиной Татьяне Александровне, ИНН 631505533047, ОГРНИП 314631203100035, г. Самара, пр-кт Металлургов, д. 54, кв. 55 на обработку моих персональных данных в соответствии с Федеральным законом от 27.07.2006 № 152-ФЗ «О персональных данных».</p>
+
+        <h3>1. Персональные данные</h3>
+        <p>Согласие распространяется на обработку следующих данных, предоставляемых мной через формы сайта:</p>
+        <ul>
+          <li>имя, фамилия, отчество;</li>
+          <li>номер телефона;</li>
+          <li>адрес электронной почты;</li>
+          <li>данные обо мне, которые станут известны в ходе исполнения договоров, в случае заключения договора между мной и ИП Курилкина Т.А.;</li>
+          <li>иные сведения, добровольно предоставленные мной в сообщении или форме обратной связи.</li>
+        </ul>
+
+        <h3>2. Цели обработки персональных данных</h3>
+        <p>Персональные данные обрабатываются в целях обработки заявок и обращений, предоставления консультаций по услугам дизайна интерьера и ремонта, подготовки предварительного расчета стоимости услуг, связи со мной, а также заключения и исполнения договоров в случае принятия решения о сотрудничестве.</p>
+
+        <h3>3. Обработка персональных данных</h3>
+        <p>Обработка персональных данных осуществляется как с использованием средств автоматизации, так и без их использования и включает сбор, запись, систематизацию, накопление, хранение, уточнение, использование, передачу, блокирование, удаление и уничтожение персональных данных.</p>
+        <p>Доступ к персональным данным может предоставляться работникам Оператора и лицам, привлекаемым для обеспечения функционирования сайта и обработки обращений, в пределах, необходимых для достижения целей обработки.</p>
+
+        <h3>4. Срок действия согласия</h3>
+        <p>Настоящее согласие действует с момента его предоставления до достижения целей обработки персональных данных либо до момента отзыва согласия, если иное не предусмотрено законодательством Российской Федерации.</p>
+
+        <h3>5. Отзыв согласия</h3>
+        <p>Я вправе отозвать настоящее согласие путем направления соответствующего обращения оператору персональных данных по адресу: <a href="mailto:ris89171647077@gmail.com">ris89171647077@gmail.com</a>.</p>
+        <p>В случае отзыва согласия оператор прекращает обработку персональных данных, если отсутствуют иные законные основания для продолжения обработки, предусмотренные законодательством Российской Федерации.</p>
+
+        <h3>6. Подтверждение согласия</h3>
+        <p>Отправляя заявку через сайт <a href="https://ris-design63.ru">https://ris-design63.ru</a>, я подтверждаю, что ознакомлен(а) с настоящим Согласием и <a href="#policy">Политикой обработки персональных данных</a> и добровольно предоставляю согласие на обработку моих персональных данных на указанных условиях.</p>
+
+        <p class="doc-note">Нажимая кнопку отправки формы на сайте, вы подтверждаете согласие с условиями настоящего документа и Политикой обработки персональных данных.</p>
+        <a class="to-top" href="#consent">↑ К началу документа</a>
+      </article>
+
+      <article class="doc-card doc" id="policy">
+        <h2>Политика обработки персональных данных</h2>
+        <p class="doc-intro">Настоящая Политика обработки персональных данных определяет порядок обработки и защиты персональных данных пользователей сайта <a href="https://ris-design63.ru">https://ris-design63.ru</a>.</p>
+
+        <h3>1. Общие положения</h3>
+        <p>1.1. Настоящая Политика разработана в соответствии с Федеральным законом от 27.07.2006 № 152-ФЗ «О персональных данных» и иными нормативными правовыми актами Российской Федерации в области персональных данных.</p>
+        <p>1.2. Политика распространяется на все персональные данные, которые Оператор получает от пользователей сайта <a href="https://ris-design63.ru">https://ris-design63.ru</a>.</p>
+        <p>1.3. Оператор персональных данных: Индивидуальный предприниматель Курилкина Татьяна Александровна, ИНН 631505533047, ОГРНИП 314631203100035, г. Самара, пр-кт Металлургов, д. 54, кв. 55.</p>
+        <p>1.4. Использование сайта, заполнение и отправка форм обратной связи означает ознакомление пользователя с настоящей Политикой.</p>
+
+        <h3>2. Основные понятия</h3>
+        <p>В настоящей Политике используются следующие понятия:</p>
+        <div class="defs">
+          <p><strong>Персональные данные</strong> — информация, относящаяся к прямо или косвенно определенному, или определяемому физическому лицу.</p>
+          <p><strong>Обработка персональных данных</strong> — любое действие или совокупность действий с персональными данными, осуществляемых с использованием средств автоматизации или без их использования.</p>
+          <p><strong>Оператор</strong> — лицо, самостоятельно или совместно с другими лицами организующее и осуществляющее обработку персональных данных.</p>
+          <p><strong>Пользователь</strong> — лицо, посещающее сайт <a href="https://ris-design63.ru">https://ris-design63.ru</a> и предоставляющее свои персональные данные посредством форм сайта.</p>
+        </div>
+
+        <h3>3. Права и обязанности пользователя</h3>
+        <p>3.1. Пользователь вправе:</p>
+        <ul>
+          <li>получать информацию об обработке своих персональных данных;</li>
+          <li>требовать уточнения, блокирования или уничтожения своих персональных данных в случаях, предусмотренных законодательством Российской Федерации;</li>
+          <li>отозвать согласие на обработку персональных данных;</li>
+          <li>обращаться к Оператору по вопросам обработки персональных данных.</li>
+        </ul>
+        <p>3.2. Пользователь обязан предоставлять достоверные данные и сообщать Оператору об их изменении, если это необходимо для достижения целей обработки.</p>
+
+        <h3>4. Принципы обработки персональных данных</h3>
+        <p>4.1. Обработка персональных данных осуществляется на законной и справедливой основе.</p>
+        <p>4.2. Обработка персональных данных ограничивается конкретными, заранее определенными и законными целями.</p>
+        <p>4.3. Не допускается обработка персональных данных, несовместимая с целями их сбора.</p>
+        <p>4.4. Обрабатываются только персональные данные, необходимые для достижения заявленных целей.</p>
+        <p>4.5. Содержание и объем обрабатываемых персональных данных соответствуют целям обработки.</p>
+        <p>4.6. Оператор принимает меры по обеспечению точности, достаточности и актуальности персональных данных.</p>
+        <p>4.7. Персональные данные хранятся не дольше, чем этого требуют цели обработки, если иное не предусмотрено законодательством Российской Федерации.</p>
+
+        <h3>5. Персональные данные пользователей</h3>
+        <p>Оператор может обрабатывать следующие персональные данные пользователей сайта:</p>
+        <ul>
+          <li>фамилия, имя, отчество (при предоставлении);</li>
+          <li>номер телефона;</li>
+          <li>адрес электронной почты;</li>
+          <li>сведения о типе объекта недвижимости;</li>
+          <li>сведения о площади объекта;</li>
+          <li>информация о планируемом ремонте, дизайн-проекте и пожеланиях пользователя;</li>
+          <li>сведения, содержащиеся в обращениях и сообщениях пользователя;</li>
+          <li>технические данные, автоматически передаваемые устройством пользователя при посещении сайта, в том числе IP-адрес, сведения о браузере, операционной системе, устройстве, времени посещения и действиях на сайте.</li>
+        </ul>
+        <p>Пользователь самостоятельно определяет объем предоставляемых персональных данных, за исключением информации, необходимой для обработки его обращения.</p>
+
+        <h3>6. Цели обработки персональных данных</h3>
+        <p>Оператор обрабатывает персональные данные пользователей в следующих целях:</p>
+        <div class="table-scroll">
+          <table class="doc-table">
+            <thead>
+              <tr><th scope="col">Цель обработки</th><th scope="col">Персональные данные</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Обработка заявок и обращений</td>
+                <td data-label="Персональные данные">Имя, телефон, email, содержание обращения</td>
+              </tr>
+              <tr>
+                <td>Консультирование по услугам дизайна интерьера и ремонта</td>
+                <td data-label="Персональные данные">Имя, телефон, сведения об объекте и пожеланиях</td>
+              </tr>
+              <tr>
+                <td>Подготовка предварительного расчета стоимости услуг</td>
+                <td data-label="Персональные данные">Телефон, сведения о типе и площади объекта, информация о планируемых работах</td>
+              </tr>
+              <tr>
+                <td>Связь с пользователем по его обращению</td>
+                <td data-label="Персональные данные">Имя, телефон, адрес электронной почты</td>
+              </tr>
+              <tr>
+                <td>Заключение и исполнение договоров</td>
+                <td data-label="Персональные данные">Данные, необходимые для заключения и исполнения договора</td>
+              </tr>
+              <tr>
+                <td>Анализ работы сайта и улучшение его функционирования</td>
+                <td data-label="Персональные данные">Технические данные, информация о действиях пользователя на сайте</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>7. Правовые основания обработки персональных данных</h3>
+        <p>Правовыми основаниями обработки персональных данных являются:</p>
+        <ul>
+          <li>Федеральный закон от 27.07.2006 № 152-ФЗ «О персональных данных»;</li>
+          <li>согласие пользователя на обработку персональных данных;</li>
+          <li>необходимость обработки данных для заключения или исполнения договора, стороной которого является пользователь;</li>
+          <li>иные основания, предусмотренные законодательством Российской Федерации.</li>
+        </ul>
+
+        <h3>8. Порядок обработки и защиты персональных данных</h3>
+        <p>8.1. Обработка персональных данных осуществляется с использованием средств автоматизации и без использования таких средств.</p>
+        <p>8.2. Оператор осуществляет сбор, запись, систематизацию, накопление, хранение, уточнение, извлечение, использование, передачу, обезличивание, блокирование, удаление и уничтожение персональных данных.</p>
+        <p>8.3. Оператор принимает необходимые правовые, организационные и технические меры для защиты персональных данных от неправомерного или случайного доступа, изменения, раскрытия, уничтожения и иных неправомерных действий.</p>
+        <p>8.4. Доступ к персональным данным предоставляется только лицам, которым он необходим для выполнения обязанностей, связанных с обработкой обращений пользователей и оказанием услуг.</p>
+        <p>8.5. Оператор не раскрывает персональные данные третьим лицам без согласия пользователя, за исключением случаев, предусмотренных законодательством Российской Федерации, а также случаев, когда передача необходима для функционирования сайта, обработки обращений или исполнения обязательств перед пользователем.</p>
+        <p>8.6. При привлечении третьих лиц к обработке персональных данных Оператор обеспечивает соблюдение ими требований законодательства Российской Федерации о персональных данных.</p>
+
+        <h3>9. Сроки обработки и хранения персональных данных</h3>
+        <p>9.1. Персональные данные обрабатываются до достижения целей обработки, прекращения необходимости в их достижении либо до отзыва согласия на обработку, если иное не предусмотрено законодательством Российской Федерации.</p>
+        <p>9.2. Персональные данные, необходимые для заключения и исполнения договоров, могут храниться в течение сроков, установленных законодательством Российской Федерации.</p>
+        <p>9.3. По достижении целей обработки или при наступлении иных законных оснований персональные данные подлежат удалению или уничтожению, если их дальнейшее хранение не требуется в соответствии с законодательством Российской Федерации.</p>
+
+        <h3>10. Отзыв согласия и обращение пользователя</h3>
+        <p>10.1. Пользователь вправе отозвать согласие на обработку персональных данных, направив Оператору обращение на электронную почту: <a href="mailto:ris89171647077@gmail.com">ris89171647077@gmail.com</a>.</p>
+        <p>10.2. Пользователь вправе направить обращение об уточнении, блокировании или уничтожении персональных данных, а также запрос информации об их обработке.</p>
+        <p>10.3. Оператор рассматривает обращения пользователей в сроки, предусмотренные законодательством Российской Федерации.</p>
+
+        <h3>11. Использование cookies и технических данных</h3>
+        <p>11.1. Сайт может использовать cookies и другие технические данные для обеспечения корректной работы сайта, анализа посещаемости и улучшения пользовательского опыта.</p>
+        <p>11.2. Сведения, собираемые с помощью cookies и аналитических сервисов, могут включать информацию о браузере, устройстве пользователя, посещенных страницах и действиях на сайте.</p>
+        <p>11.3. Пользователь может ограничить или отключить использование cookies в настройках своего браузера. При этом отдельные функции сайта могут работать некорректно.</p>
+        <p>11.4. Если на сайте используются сторонние сервисы аналитики, обработка собираемых ими данных осуществляется с учетом условий и документов соответствующих сервисов.</p>
+
+        <h3>12. Заключительные положения</h3>
+        <p>12.1. Оператор вправе вносить изменения в настоящую Политику.</p>
+        <p>12.2. Новая редакция Политики вступает в силу с момента ее размещения на сайте, если иное не указано в новой редакции.</p>
+        <p>12.3. Актуальная версия Политики размещается на сайте <a href="https://ris-design63.ru">https://ris-design63.ru</a>.</p>
+        <p>12.4. По вопросам обработки персональных данных пользователь может обратиться к Оператору по электронной почте: <a href="mailto:ris89171647077@gmail.com">ris89171647077@gmail.com</a>.</p>
+
+        <p class="doc-note">Если вы не согласны с условиями настоящей Политики, пожалуйста, прекратите использование сайта и не отправляйте свои персональные данные через формы обратной связи.</p>
+        <a class="to-top" href="#policy">↑ К началу документа</a>
+      </article>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div>
+        <h4>Навигация</h4>
+        <a href="index.html#services">Услуги</a>
+        <a href="portfolio.html">Наши работы</a>
+        <a href="index.html#process">Как мы работаем</a>
+        <a href="index.html#contacts">Контакты</a>
+        <a href="personal.html">Персональные данные</a>
+      </div>
+      <div>
+        <h4>Контакты</h4>
+        <a href="tel:+79171647077">+7 (917) 164-70-77</a>
+        <a href="https://t.me/+79171647077" target="_blank" rel="noopener">Telegram</a>
+        <a href="https://max.ru/u/f9LHodD0cOJGmcOdPlXkOn9G2quiw97UGvy4poR3KUaQvVkYbkO44LMCE9c" target="_blank" rel="noopener">MAX</a>
+        <a href="https://api.whatsapp.com/send/?phone=79171647077&amp;text=%D0%9E%D0%B1%D1%80%D0%B0%D1%89%D0%B5%D0%BD%D0%B8%D0%B5+%D0%B8%D0%B7+%D0%AF%D0%BD%D0%B4%D0%B5%D0%BA%D1%81+%D0%9A%D0%B0%D1%80%D1%82%0A%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!+%D0%9C%D0%B5%D0%BD%D1%8F+%D0%B7%D0%B0%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D0%B5%D1%81%D0%BE%D0%B2%D0%B0%D0%BB%D0%BE+%D0%B2%D0%B0%D1%88%D0%B5+%D0%BF%D1%80%D0%B5%D0%B4%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5&amp;type=phone_number&amp;app_absent=0" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="https://vk.ru/ris_design" target="_blank" rel="noopener">ВКонтакте</a>
+        <a href="https://www.instagram.com/love_ris.design/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://yandex.ru/maps/org/ris_dizayn/162965584925/?ll=50.116469%2C53.191614&amp;z=14.45" target="_blank" rel="noopener">Яндекс Карты</a>
+      </div>
+    </div>
+    <div class="footer-bottom">© РИС-Дизайн. Все права защищены.</div>
+  </footer>
+
+  <script>
+    document.querySelector('.mobile-menu-btn').addEventListener('click', () => {
+      const nav = document.querySelector('.nav');
+      const open = nav.style.display === 'flex';
+      nav.style.display = open ? 'none' : 'flex';
+      if (!open) {
+        nav.style.position = 'absolute';
+        nav.style.top = '70px';
+        nav.style.left = '0';
+        nav.style.right = '0';
+        nav.style.background = '#fff';
+        nav.style.borderBottom = '1px solid #e6e3df';
+        nav.style.padding = '14px 20px';
+        nav.style.flexDirection = 'column';
+        nav.style.gap = '12px';
+      }
+    });
+  </script>
+</body>
+</html>
