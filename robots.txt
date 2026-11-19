@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ris-design63.ru/sitemap.xml
