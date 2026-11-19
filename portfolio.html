@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Портфолио — РИС-Дизайн</title>
-  <meta name="description" content="Портфолио РИС-Дизайн: дизайн-проекты квартир в Самаре — визуализации по комнатам. Интерьеры, ремонт и отделочные работы под ключ." />
+  <title>Наши работы — РИС-Дизайн</title>
+  <meta name="description" content="Наши работы РИС-Дизайн: дизайн-проекты квартир в Самаре — визуализации по комнатам. Интерьеры, ремонт и отделочные работы под ключ." />
   <style>
     :root{
       --bg:#f7f5f2;
@@ -111,11 +111,15 @@
       margin: 0 0 20px;
     }
     .hero .lead{
-      font-size: clamp(16px, 1.6vw, 20px);
+      font-size: clamp(15px, 1.4vw, 18px);
+      line-height: 1.6;
       color:#2a2a2a;
-      max-width: 640px;
-      margin: 0 0 28px;
+      max-width: 760px;
+      margin: 0;
     }
+    .hero .lead p{margin:0 0 14px}
+    .hero .lead p:first-child{font-size: clamp(17px, 1.8vw, 22px); line-height:1.45; color:var(--ink); margin-bottom:18px}
+    .hero .lead p:last-child{margin-bottom:0}
     .cta-row{display:flex; flex-wrap:wrap; gap:12px; margin-bottom:36px}
     .btn{
       display:inline-flex; align-items:center; justify-content:center; gap:8px;
@@ -131,14 +135,6 @@
     .btn-ghost:hover{background:#fff; transform:translateY(-2px)}
     .back-home{display:inline-flex; margin-bottom:28px;}
     .magnetic{ transform: translate(var(--tx,0px), var(--ty,0px)); transition: transform .4s var(--ease); }
-
-    .hero-pills{display:flex; flex-wrap:wrap; gap:10px}
-    .pill{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:10px 14px; border-radius:999px; font-size:13px; font-weight:500;
-      background:rgba(255,255,255,0.75); border:1px solid #dcd8d3; color:#3a3a3a;
-    }
-    .dot{width:8px; height:8px; border-radius:50%; background:var(--accent); display:inline-block}
 
     /* Sections */
     section{padding:80px 0}
@@ -524,13 +520,11 @@
       <div class="blob blob-2"></div>
       <div class="container">
         <a class="btn btn-ghost back-home" href="index.html">← На главную</a>
-        <div class="section-label">Наши работы</div>
-        <h1>Дизайн-проекты, которыми мы гордимся</h1>
-        <p class="lead">Каждая квартира — это десятки кадров: от планировки до расстановки мебели. Откройте альбом проекта и посмотрите интерьер по комнатам.</p>
-        <div class="hero-pills">
-          <span class="pill"><span class="dot"></span><span id="statProjects">4</span> дизайн-проекта</span>
-          <span class="pill"><span class="dot"></span><span id="statPhotos">106</span> визуализаций</span>
-          <span class="pill"><span class="dot"></span>Самара и область</span>
+        <h1>Наши работы</h1>
+        <div class="lead">
+          <p>Для нас каждый проект — это не просто объект, а история людей, их привычек, желаний и представлений о комфорте.</p>
+          <p>Поэтому мы внимательно относимся к каждому этапу работы: знакомимся с предпочтениями клиентов, обсуждаем идеи и пожелания, продумываем решения с учётом образа жизни и бюджета. Подбираем материалы и формируем закупки, организуем ремонтные работы, создаём мебель на заказ.</p>
+          <p>Мы вкладываем внимание и заботу в каждый проект, чтобы создавать не просто красивые интерьеры, а пространства, в которых по-настоящему хорошо.</p>
         </div>
       </div>
     </section>
@@ -745,7 +739,7 @@
       });
     })();
 
-    /* ================= Портфолио: карточки и альбомы ================= */
+    /* ================= Наши работы: карточки и альбомы ================= */
     (function(){
       const DATA = window.RIS_PORTFOLIO || [];
       const projectsEl = document.getElementById('projects');
@@ -771,12 +765,6 @@
 
       const designProjects = DATA.filter(p => (p.section || 'design') === 'design');
       const realizedProjects = DATA.filter(p => p.section === 'realized');
-
-      const totalPhotos = DATA.reduce((n, p) => n + p.photos, 0);
-      const statProjects = document.getElementById('statProjects');
-      const statPhotos = document.getElementById('statPhotos');
-      if (statProjects) statProjects.textContent = designProjects.length;
-      if (statPhotos) statPhotos.textContent = designProjects.reduce((n, p) => n + p.photos, 0);
 
       function esc(s){
         return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
