@@ -789,20 +789,6 @@
         return s ? s.charAt(0).toUpperCase() + s.slice(1) : s;
       }
 
-      /* В счёт «комнат» идут только жилые помещения:
-         кухня, коридор, санузел, ванная, холл, балкон, гардеробная и т.п. не считаются. */
-      const LIVING_ROOM_RE = /(спальн|гостин|детск|кабинет|столов|мастер)/i;
-      const NON_LIVING_RE  = /(коридор|кухн|санузел|ванн|душев|холл|балкон|лоджи|прихож|гардероб|кладов|котельн|постирочн|террас|прочие|раздел)/i;
-      function isLivingRoom(name){
-        const n = String(name).trim();
-        if (/кухня\s*[-–—]\s*гостиная/i.test(n)) return true;
-        if (/гостиная\s*[-–—]\s*спальня/i.test(n)) return true;
-        return LIVING_ROOM_RE.test(n) && !NON_LIVING_RE.test(n);
-      }
-      function livingRoomsCount(p){
-        return (p.rooms || []).filter(r => isLivingRoom(r.name)).length;
-      }
-
       // названия комнат всегда с большой буквы (даже если в исходнике с маленькой)
       DATA.forEach(p => (p.rooms || []).forEach(r => { r.name = cap(r.name); }));
 
@@ -869,16 +855,6 @@
         if (n10 === 1 && n100 !== 11) return one;
         if (n10 >= 2 && n10 <= 4 && (n100 < 10 || n100 >= 20)) return few;
         return many;
-      }
-
-      function roomMetric(p){
-        // «Другие помещения» — подборка по типам помещений, а не квартира
-        if (p.slug === 'drugie-pomescheniya'){
-          const n = (p.rooms || []).length;
-          return n ? `<span>🗂 ${n} ${plural(n, 'раздел', 'раздела', 'разделов')}</span>` : '';
-        }
-        const n = livingRoomsCount(p);
-        return n ? `<span>🚪 ${n} ${plural(n, 'комната', 'комнаты', 'комнат')}</span>` : '';
       }
 
       /* ---------- альбом ---------- */
