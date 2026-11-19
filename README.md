@@ -18,7 +18,8 @@
 сайт лежит в `public_html`. DNS домена на NS Timeweb, SSL Let's Encrypt выпущен
 на `ris-design63.ru` и `www.ris-design63.ru` и продлевается автоматически.
 
-Редиректы в `public_html/.htaccess`: `http → https` и `www → без www`.
+Редиректы в `public_html/.htaccess`: `http → https` и `www → без www`
+(эталонный файл — [`.htaccess`](.htaccess) в корне репозитория).
 GitHub Pages остаётся зеркалом и обновляется автоматически при пуше в `main`.
 
 Обновление файлов на хостинге — через «Файловый менеджер» панели Timeweb
