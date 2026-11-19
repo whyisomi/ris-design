@@ -3,3 +3,4 @@ Allow: /
 Disallow: /cgi-bin/
 
 Sitemap: https://ris-design63.ru/sitemap.xml
+Sitemap: https://ris-design63.ru/sitemap-images.xml

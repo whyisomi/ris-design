@@ -201,7 +201,9 @@ window.RIS_PORTFOLIO = [
    }
   ],
   "photos": 23,
-  "cover": "media/portfolio/zhk-volzhskie-ogni-112-kvm/cover.webp"
+  "cover": "media/portfolio/zhk-volzhskie-ogni-112-kvm/cover.webp",
+  "coverW": 1088,
+  "coverH": 1200
  },
  {
   "slug": "zhk-volzhskie-ogni-80-kvm",
@@ -480,7 +482,9 @@ window.RIS_PORTFOLIO = [
    }
   ],
   "photos": 33,
-  "cover": "media/portfolio/zhk-volzhskie-ogni-80-kvm/cover.webp"
+  "cover": "media/portfolio/zhk-volzhskie-ogni-80-kvm/cover.webp",
+  "coverW": 960,
+  "coverH": 1200
  },
  {
   "slug": "zhk-imperial-91-kvm",
@@ -677,7 +681,9 @@ window.RIS_PORTFOLIO = [
    }
   ],
   "photos": 23,
-  "cover": "media/portfolio/zhk-imperial-91-kvm/cover.webp"
+  "cover": "media/portfolio/zhk-imperial-91-kvm/cover.webp",
+  "coverW": 908,
+  "coverH": 1200
  },
  {
   "slug": "prkt-karla-marksa-97-kvm",
@@ -908,7 +914,9 @@ window.RIS_PORTFOLIO = [
    }
   ],
   "photos": 27,
-  "cover": "media/portfolio/prkt-karla-marksa-97-kvm/cover.webp"
+  "cover": "media/portfolio/prkt-karla-marksa-97-kvm/cover.webp",
+  "coverW": 1200,
+  "coverH": 1200
  },
  {
   "slug": "ul-molodogvardeyskaya",
@@ -1179,7 +1187,9 @@ window.RIS_PORTFOLIO = [
    }
   ],
   "photos": 41,
-  "cover": "media/portfolio/realized/ul-molodogvardeyskaya/cover.webp"
+  "cover": "media/portfolio/realized/ul-molodogvardeyskaya/cover.webp",
+  "coverW": 900,
+  "coverH": 1200
  },
  {
   "slug": "zhk-farengeyt",
@@ -1382,7 +1392,9 @@ window.RIS_PORTFOLIO = [
    }
   ],
   "photos": 31,
-  "cover": "media/portfolio/realized/zhk-farengeyt/cover.webp"
+  "cover": "media/portfolio/realized/zhk-farengeyt/cover.webp",
+  "coverW": 900,
+  "coverH": 1200
  },
  {
   "slug": "ul-antonova-ovseenko",
@@ -1498,7 +1510,9 @@ window.RIS_PORTFOLIO = [
    }
   ],
   "photos": 16,
-  "cover": "media/portfolio/realized/ul-antonova-ovseenko/cover.webp"
+  "cover": "media/portfolio/realized/ul-antonova-ovseenko/cover.webp",
+  "coverW": 900,
+  "coverH": 1200
  },
  {
   "slug": "zhk-bukh",
@@ -1687,7 +1701,9 @@ window.RIS_PORTFOLIO = [
    }
   ],
   "photos": 27,
-  "cover": "media/portfolio/realized/zhk-bukh/cover.webp"
+  "cover": "media/portfolio/realized/zhk-bukh/cover.webp",
+  "coverW": 900,
+  "coverH": 1200
  },
  {
   "slug": "drugie-pomescheniya",
@@ -2149,6 +2165,8 @@ window.RIS_PORTFOLIO = [
   ],
   "photos": 85,
   "cover": "media/portfolio/realized/drugie-pomescheniya/cover.webp",
+  "coverW": 960,
+  "coverH": 1280,
   "note": "Кухни, спальни, санузлы и прочие помещения разных объектов"
  }
 ];

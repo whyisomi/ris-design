@@ -171,6 +171,9 @@ def build_portfolio():
                 print(f"  !! обложка не найдена: {cover_src}")
 
         photos_count = sum(len(r["photos"]) for r in rooms)
+        cover_w = cover_h = None
+        if cover_rel:
+            cover_w, cover_h = Image.open(SITE / cover_rel).size
         # Заголовок с площадью — иначе «ЖК Волжские огни» повторяется дважды.
         display = f"{p_title}, {p_area} м²" if p_area else p_title
         projects.append({
@@ -183,6 +186,8 @@ def build_portfolio():
             "rooms": rooms,
             "photos": photos_count,
             "cover": cover_rel,
+            "coverW": cover_w,
+            "coverH": cover_h,
         })
         print(f"  {display:34} {photos_count:3} фото  {len(rooms)} комнат  -> {p_slug}")
 
@@ -207,6 +212,11 @@ def write_manifest(projects):
     for p in merged:
         for r in p.get("rooms", []):
             r["name"] = pretty_room_name(r["name"])
+        # размеры обложки (для width/height в разметке) — досчитываем, если нет
+        if p.get("cover") and not (p.get("coverW") and p.get("coverH")):
+            cover_path = SITE / p["cover"]
+            if cover_path.exists():
+                p["coverW"], p["coverH"] = Image.open(cover_path).size
     manifest_js = (
         "/* Сгенерировано tools/optimize.py. Не редактировать вручную. */\n"
         "window.RIS_PORTFOLIO = " + json.dumps(merged, ensure_ascii=False, indent=1) + ";\n"

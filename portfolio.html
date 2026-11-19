@@ -846,6 +846,11 @@
         s = String(s);
         return s ? s.charAt(0).toUpperCase() + s.slice(1) : s;
       }
+      // размеры превью с сохранением пропорций исходного фото
+      function thumbDims(p, max){
+        const w = p.w || 4, h = p.h || 3;
+        return w >= h ? [max, Math.round(max * h / w)] : [Math.round(max * w / h), max];
+      }
 
       // названия комнат всегда с большой буквы (даже если в исходнике с маленькой)
       DATA.forEach(p => (p.rooms || []).forEach(r => { r.name = cap(r.name); }));
@@ -855,7 +860,7 @@
         return `
           <button class="project reveal" data-idx="${i}" style="transition-delay:${i * 90}ms">
             <div class="project__media">
-              ${p.cover ? `<img src="${p.cover}" alt="${esc(altText || p.title)}" loading="lazy" />` : ''}
+              ${p.cover ? `<img src="${p.cover}" alt="${esc(altText || p.title)}" width="${p.coverW || 1200}" height="${p.coverH || 900}" loading="lazy" />` : ''}
               <div class="project__badges">
                 <span class="badge badge--gold">${esc(badge)}</span>
                 ${p.areaLabel ? `<span class="badge">${esc(p.areaLabel)}</span>` : ''}
@@ -948,13 +953,16 @@
         albumRooms.querySelectorAll('.room-tab').forEach((t, k) => t.classList.toggle('is-active', k === i));
         albumLegend.textContent = `${room.name} — ${photos.length} ${plural(photos.length, 'фото', 'фото', 'фото')}`;
 
-        albumGrid.innerHTML = photos.map((p, k) => `
+        albumGrid.innerHTML = photos.map((p, k) => {
+          const [tw, th] = thumbDims(p, 420);
+          return `
           <button class="thumb" data-i="${k}" style="animation-delay:${Math.min(k * 45, 700)}ms">
-            <img src="${p.thumb}" alt="${esc(current.title)} — ${esc(room.name)}, фото ${k + 1}" loading="lazy" />
+            <img src="${p.thumb}" alt="${esc(current.title)} — ${esc(room.name)}, фото ${k + 1}" width="${tw}" height="${th}" loading="lazy" />
             <span class="thumb__num">${k + 1}</span>
             <span class="thumb__zoom">⤢</span>
           </button>
-        `).join('');
+        `;
+        }).join('');
         albumGrid.querySelectorAll('.thumb').forEach(t => {
           t.addEventListener('click', () => openLightbox(Number(t.dataset.i)));
         });
