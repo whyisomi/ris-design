@@ -43,6 +43,7 @@
     ]
   }
   </script>
+  <link rel="stylesheet" href="media/leaflet/leaflet.css" />
   <style>
     :root{
       --bg:#f7f5f2;
@@ -328,8 +329,14 @@
     }
     .map-caption b{color:var(--ink); font-weight:600}
     .map-caption small{font-size:12px; color:#9a9a9a}
-    iframe{display:block; width:100%; height:420px; border:0}
-    @media (max-width:640px){ .map-wrap iframe{height:460px} }
+    .map-canvas{width:100%; height:420px; background:#e9e5df; z-index:0}
+    .map-canvas .leaflet-control-attribution{font-size:11px; color:#6b6b6b}
+    .map-canvas .leaflet-popup-content{font:14px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif; color:var(--ink); margin:12px 16px}
+    .map-canvas .leaflet-popup-content b{font-size:15px}
+    .map-canvas .leaflet-popup-content a{color:var(--accent)}
+    .map-pin{background:none; border:0}
+    .map-pin svg{filter:drop-shadow(0 8px 12px rgba(20,20,20,.28))}
+    @media (max-width:640px){ .map-canvas{height:380px} }
 
     /* Quiz */
     .quiz{background:linear-gradient(180deg, #ffffff, #f1ede6); border-top:1px solid var(--line); border-bottom:1px solid var(--line)}
@@ -678,16 +685,11 @@
       <div class="section-label">Как нас найти</div>
       <h2 class="section-title">Мы на карте</h2>
       <div class="map-wrap">
-        <iframe
-          src="https://yandex.ru/map-widget/v1/?ol=biz&oid=162965584925&ll=50.116469%2C53.191614&z=16"
-          title="РИС-Дизайн на карте — Самара, ул. Буянова, 16"
-          loading="lazy"
-          allowfullscreen
-        ></iframe>
+        <div id="map" class="map-canvas" role="region" aria-label="Интерактивная карта: РИС-Дизайн — Самара, ул. Буянова, 16"></div>
       </div>
       <div class="map-caption">
         <span><b>Самара, ул. Буянова, 16</b> — студия дизайна РИС</span>
-        <small>© Яндекс Карты</small>
+        <small>© OpenStreetMap contributors</small>
       </div>
       <div style="margin-top:14px">
         <a class="btn btn-ghost" href="https://yandex.ru/maps/org/ris_dizayn/162965584925/?ll=50.116469%2C53.191614&z=16" target="_blank" rel="noopener">Открыть в Яндекс Картах</a>
@@ -1067,6 +1069,54 @@
         }
       }
       updateDots();
+    })();
+  </script>
+
+  <script src="media/leaflet/leaflet.js"></script>
+  <script>
+    (function(){
+      const el = document.getElementById('map');
+      if (!el || !window.L) return;
+
+      const coords = [53.191614, 50.116469];
+      const map = L.map(el, {
+        scrollWheelZoom: false,
+        zoomControl: true
+      }).setView(coords, 16);
+
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors'
+      }).addTo(map);
+
+      const pin = L.divIcon({
+        className: 'map-pin',
+        html: '<svg width="34" height="46" viewBox="0 0 34 46" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17 45s15-16.2 15-28A15 15 0 1 0 2 17c0 11.8 15 28 15 28Z" fill="#c5924a" stroke="#fff" stroke-width="2"/><circle cx="17" cy="17" r="5.5" fill="#fff"/></svg>',
+        iconSize: [34, 46],
+        iconAnchor: [17, 45],
+        popupAnchor: [0, -40]
+      });
+
+      L.marker(coords, { icon: pin, title: 'РИС-Дизайн' })
+        .addTo(map)
+        .bindPopup('<b>РИС-Дизайн</b><br>Самара, ул. Буянова, 16<br><a href="tel:+79171647077">+7 (917) 164-70-77</a><br><a href="https://yandex.ru/maps/org/ris_dizayn/162965584925/?ll=50.116469%2C53.191614&z=16" target="_blank" rel="noopener">Открыть в Яндекс Картах</a>')
+        .openPopup();
+
+      // колесо мыши включает зум только после клика по карте
+      el.addEventListener('click', () => map.scrollWheelZoom.enable());
+      el.addEventListener('mouseleave', () => map.scrollWheelZoom.disable());
+
+      const refresh = () => map.invalidateSize();
+      window.addEventListener('load', refresh);
+      setTimeout(refresh, 1200);
+
+      const section = el.closest('.reveal');
+      if (section && 'MutationObserver' in window) {
+        const mo = new MutationObserver(() => {
+          if (section.classList.contains('in')) { refresh(); mo.disconnect(); }
+        });
+        mo.observe(section, { attributes: true, attributeFilter: ['class'] });
+      }
     })();
   </script>
 </body>
