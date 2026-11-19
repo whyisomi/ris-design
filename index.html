@@ -1072,9 +1072,9 @@
     })();
   </script>
 
-  <script src="media/leaflet/leaflet.js"></script>
+  <script src="media/leaflet/leaflet.js" defer></script>
   <script>
-    (function(){
+    document.addEventListener('DOMContentLoaded', function(){
       const el = document.getElementById('map');
       if (!el || !window.L) return;
 
@@ -1117,7 +1117,7 @@
         });
         mo.observe(section, { attributes: true, attributeFilter: ['class'] });
       }
-    })();
+    });
   </script>
 </body>
 </html>
