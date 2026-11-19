@@ -152,7 +152,7 @@
       --line:#e6e3df;
       --card:#ffffff;
       --accent:#c5924a;
-      --accent-2:#b07033;
+      --accent-2:#9c5f22;
       --ok:#3a6b4f;
       --shadow: 0 20px 60px rgba(20,20,20,0.08);
       --shadow-sm: 0 10px 30px rgba(20,20,20,0.06);
@@ -376,6 +376,7 @@
     .reviews-carousel{position:relative; margin-top:8px;}
     .reviews-track{display:flex; gap:16px; overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none; -ms-overflow-style:none;}
     .reviews-track::-webkit-scrollbar{display:none;}
+    .reviews-track:focus-visible{outline:2px solid var(--accent); outline-offset:4px; border-radius:8px;}
     .reviews-slide{flex:0 0 100%; scroll-snap-align:center; scroll-snap-stop:always;}
     .reviews .review{
       background:var(--bg); border:1px solid var(--line); border-radius:var(--radius);
@@ -604,6 +605,7 @@
     </div>
   </header>
 
+  <main id="main">
   <section class="hero reveal">
     <div class="blob blob-1"></div>
     <div class="blob blob-2"></div>
@@ -742,7 +744,7 @@
       <h2 class="section-title">Наши клиенты доверяют нам и обращаются вновь</h2>
       <p class="section-sub">Ведь заказывая реализацию проекта Вы получаете максимальное соответствие между дизайн-проектом и Вашим ремонтом.</p>
       <div class="reviews-carousel">
-        <div class="reviews-track">
+        <div class="reviews-track" tabindex="0" role="group" aria-label="Отзывы клиентов, прокрутка влево и вправо">
           <div class="reviews-slide">
             <div class="review">
               <img class="reviews-photo" src="media/отзыв1.png" alt="Отзыв клиента о ремонте квартиры — РИС-Дизайн, отзыв 1" width="713" height="337" loading="lazy" />
@@ -823,6 +825,8 @@
       </div>
     </div>
   </section>
+
+  </main>
 
   <footer class="footer">
     <div class="container">
