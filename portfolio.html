@@ -430,20 +430,29 @@
     /* Footer */
     .footer{
       position:relative;
-      color:#d6d3cf;
-      background-color: #111;
+      color:#fff;
+      background-color:#1a1a1a;
       background-image:
-        linear-gradient(180deg, rgba(17,17,17,0.78), rgba(17,17,17,0.88)),
+        linear-gradient(180deg, rgba(17,17,17,0.45), rgba(17,17,17,0.72)),
         url('media/futter.webp?v=2');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-blend-mode: normal;
+      background-size:cover;
+      background-position:left top;
+      background-repeat:no-repeat;
+      min-height:600px;
     }
-    .footer .container{padding:44px 20px; display:grid; grid-template-columns: repeat(2, auto); gap:30px 60px; justify-content:start; align-items:start}
-    .footer h4{margin:0 0 10px; font-size:14px; color:#fff}
-    .footer a, .footer p{color:#b8b4af; font-size:14px}
-    .footer a{display:block; margin:0 0 8px; position:relative}
+    .footer .container{
+      max-width:none; width:100%; margin:0;
+      padding:250px 20px 70px 40px;
+      display:grid; grid-template-columns:repeat(2, 260px);
+      gap:40px 90px; justify-content:start; align-items:start;
+    }
+    .footer h4{
+      margin:0 0 22px; font-size:18px; font-weight:700; color:#fff;
+      display:flex; align-items:center; gap:16px;
+    }
+    .footer h4::after{content:""; flex:1; height:1px; background:rgba(255,255,255,.55)}
+    .footer a, .footer p{color:#fff; font-size:15px}
+    .footer a{display:block; margin:0 0 14px; position:relative; line-height:1.5}
     .footer a[href^="#"]::after{
       content:""; position:absolute; left:0; right:0; bottom:2px;
       height:2px; border-radius:2px;
@@ -495,7 +504,7 @@
       .nav{display:none}
       .mobile-menu-btn{display:block}
       .projects{grid-template-columns:1fr}
-      .footer .container{grid-template-columns:1fr}
+      .footer .container{grid-template-columns:1fr; padding:200px 20px 50px; gap:30px}
       .album__grid{grid-template-columns: repeat(auto-fill, minmax(150px, 1fr))}
       .lightbox__stage{padding:64px 16px 96px}
       .lightbox__nav{width:44px; height:44px; font-size:22px}
